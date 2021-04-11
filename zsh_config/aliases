@@ -1,0 +1,52 @@
+alias vim='nvim'
+alias v='nvim'
+alias vi='nvim'
+alias ls='exa'
+alias ll='ls -lah'
+alias l='ls -lah'
+
+alias mk='mkdir -p'
+
+alias t='tig'
+
+alias cls='clear'
+alias copy='pbcopy'
+alias vg='vagrant'
+
+alias treed='tree -d'
+alias treef='tree -f'
+alias treel='tree -L'
+
+alias g='git'
+alias gst='git status'
+alias gp='git pull'
+alias gck='git checkout'
+alias gcm='git commit -am'
+alias gcam='git commit -am'
+alias gtree='git log --graph --simplify-by-decoration --pretty=format:'%d' --all'
+
+alias gsh='git log -1 --pretty=format:%h'
+
+alias j='jwtcli'
+alias myip='curl https://ipinfo.io/ip'
+
+alias lc='leetcode'
+
+alias dk='docker'
+alias dk-clean-img='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
+alias dk-clean-ps='docker rm $(docker ps -a -q)'
+alias dkc='docker-compose'
+
+alias start-es='docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.4.2'
+
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
+
+## kubectl
+alias kb='kubectl'
+alias kballpods='kubectl get pod --all-namespaces'
+alias kballpodsw='kubectl get pod --all-namespaces -o wide'
+alias kbpf='kubectl port-forward'
+
+

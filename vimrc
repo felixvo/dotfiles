@@ -411,7 +411,7 @@ let g:floaterm_keymap_toggle = '<F12>'
 
 nnoremap <leader>r :w <CR>:!g++ -std=c++11 -O2 -Wall % -o %:r && ./%:r<CR>
 
-source ~/.vim/coc.vim
+source ~/dotfiles/coc.vim
 
 
 autocmd FileType json syntax match Comment +\/\/.\+$+

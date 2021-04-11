@@ -1,0 +1,15 @@
+let mapleader =","
+set surround
+" cs"' => change surround from " to '
+" cst" => change surround tab to "
+" ds" => remove surround "
+" ys$" => surround to end of line
+" in visual mode, start with S and then type the surround char
+set multiple-cursors
+" <A-n>, next
+" <A-x>, skip
+" <A-p>, previous
+" g<A-n> 
+"
+map <leader>s :action Macro.FormatAndSave<CR>
+
