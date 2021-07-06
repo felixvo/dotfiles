@@ -1,4 +1,5 @@
 let mapleader =","
+"source ~/.vimrc
 set surround
 " cs"' => change surround from " to '
 " cst" => change surround tab to "
@@ -12,4 +13,5 @@ set multiple-cursors
 " g<A-n> 
 "
 map <leader>s :action Macro.FormatAndSave<CR>
-
+map <leader>f :action GotoFile<CR>
+map <leader>b :action RecentFiles<CR>

@@ -20,10 +20,10 @@ fi
 
 zplug load
 
-# bindkey '^k' history-substring-search-up
-# bindkey '^j' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+bindkey '^k' history-substring-search-up
+bindkey '^j' history-substring-search-down
+#bindkey -M vicmd 'k' history-substring-search-up
+#bindkey -M vicmd 'j' history-substring-search-down
 
 # # Load plugins
 # fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
@@ -66,8 +66,8 @@ setopt histignorealldups sharehistory
 
 # Use emacs keybindings even if our EDITOR is set to vi
 export EDITOR=nvim
-set -o vi
-bindkey -v
+#set -o vi
+#bindkey -v
 
 # fix vi mode indicator error
 function zle-line-init zle-keymap-select {
@@ -98,3 +98,7 @@ done
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #zprof # bottom of .zshrc
+
+function csv {
+    cat "$@" | column -s, -t | less -#2 -N -S
+}

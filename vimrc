@@ -179,7 +179,7 @@ set mousemodel=popup
 set mouse=a
 set t_Co=256
 set guioptions=egmrti
-set guifont=Courier:h8
+set guifont=PTMono-Regular:h18
 
 set pumheight=10                        " Makes popup menu smaller
 set fileencoding=utf-8                  " The encoding written to file
@@ -216,6 +216,11 @@ set cmdheight=2                         " More space for displaying messages
 "fix slow scrolling in vim
 "disable auto matching parens
 let g:loaded_matchparen=1
+
+set nocursorline
+set nocursorcolumn
+set scrolljump=5
+set synmaxcol=180
 
 " don't render special chars (tabs, trails, ...)
 set nolist
@@ -478,15 +483,9 @@ if executable('rg')
 endif
 
 
-" Git Gutter config
-let g:gitgutter_map_keys = 0
-if exists('&signcolumn')  " Vim 7.4.2201
-  set signcolumn=yes:1
-else
-  let g:gitgutter_sign_column_always = 1
-endi
+set signcolumn=yes
 
-"  Import Go Packages
+"Import Go Packages
 augroup gopkgs
   autocmd!
   autocmd FileType go command! -buffer GoImport call fzf#run({
