@@ -18,6 +18,7 @@ alias treef='tree -f'
 alias treel='tree -L'
 
 alias g='git'
+alias gc='git checkout'
 alias gst='git status'
 alias gp='git pull'
 alias gck='git checkout'

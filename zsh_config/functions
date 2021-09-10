@@ -6,3 +6,7 @@ function mk() {
 function manpdf() {
  man -t "${1}" | open -f -a /Applications/Preview.app/
 }
+
+function fuzzy-search-history(){
+    $(cat ~/.zsh_history | fzf)
+}

@@ -5,7 +5,6 @@
 if has('vim_starting')
   set nocompatible               " Be iMproved
 endif
-
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 
 if !filereadable(vimplug_exists)
@@ -46,6 +45,16 @@ Plug 'voldikss/vim-floaterm'
 
 Plug 'rhysd/vim-clang-format'
 
+"Plug 'Yggdroot/indentLine'
+"Plug 'yegappan/mru'
+
+Plug 'metakirby5/codi.vim'
+
+" Vim start screen
+Plug 'mhinz/vim-startify'
+" Use release branch (recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " CLOJURE
 Plug 'tpope/vim-fireplace'
 
@@ -58,7 +67,7 @@ Plug 'terryma/vim-multiple-cursors'
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
-Plug 'godlygeek/tabular'
+"Plug 'godlygeek/tabular'
 
 Plug 'scrooloose/nerdtree'
 
@@ -160,11 +169,12 @@ set hlsearch
 set hidden
 
 set cursorline
+set cursorcolumn
 
 highlight clear SignColumn
 highlight clear LineNr
 " vertical 
-set colorcolumn=80
+set colorcolumn=120
 
 " Ignore case when searching
 set ignorecase
@@ -197,8 +207,8 @@ set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
 set laststatus=0                        " Always display the status line
-set updatetime=500
-set timeoutlen=300
+set updatetime=1000
+set timeoutlen=500
 set ttimeoutlen=1
 set nohlsearch
 set incsearch
@@ -220,7 +230,7 @@ let g:loaded_matchparen=1
 set nocursorline
 set nocursorcolumn
 set scrolljump=5
-set synmaxcol=180
+"set synmaxcol=280
 
 " don't render special chars (tabs, trails, ...)
 set nolist
@@ -248,8 +258,7 @@ let g:fzf_preview_window = []
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 """ KEYS
-
-let mapleader=','
+let mapleader=' '
 let g:BufKillCreateMappings = 0
 "*****************************************************************************
 "" Abbreviations
@@ -269,59 +278,23 @@ cnoreabbrev Qall qall
 " Mappings
 "
 " next/previous buffer
-map <C-h> :bp!<CR>
-map <C-l> :bn!<CR>
+map <leader>bn :bn!<CR>
+map <leader>bp :bp!<CR>
 
 "nnoremap <silent> <leader> :WhichKey ','<CR>
 
 "Tabularize
-"if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-"endif
+"vnoremap <Leader>a= :Tabularize /=<CR>
+"vnoremap <Leader>a: :Tabularize /:\zs<CR>
 
 let g:ranger_map_keys = 0
-map <leader>rg :Ranger<CR>
+map <leader>frg :Ranger<CR>
 map <leader>cc :Commentary<CR>
-" To use `ALT+{h,j,k,l}` to navigate windows from any mode: >
-"  https://stackoverflow.com/questions/5379837/is-it-possible-to-mapping-alt-hjkl-in-insert-mode
-"  Mac issues
-" tnoremap ˙ <C-\><C-N><C-w>h
-" tnoremap ∆ <C-\><C-N><C-w>j
-" tnoremap ˚ <C-\><C-N><C-w>k
-" tnoremap ¬ <C-\><C-N><C-w>l
-" inoremap ˙ <C-\><C-N><C-w>h
-" inoremap ∆ <C-\><C-N><C-w>j
-" inoremap ˚ <C-\><C-N><C-w>k
-" inoremap ¬ <C-\><C-N><C-w>l
-" nnoremap ˙ <C-w>h
-" nnoremap ∆ <C-w>j
-" nnoremap ˚ <C-w>k
-" nnoremap ¬ <C-w>l
 
-tnoremap <M-h> <C-\><C-N><C-w>h
-tnoremap <M-j> <C-\><C-N><C-w>j
-tnoremap <M-k> <C-\><C-N><C-w>k
-tnoremap <M-l> <C-\><C-N><C-w>l
-tnoremap <M-h> <C-w>h
-tnoremap <M-j> <C-w>j
-tnoremap <M-k> <C-w>k
-tnoremap <M-l> <C-w>l
-inoremap <M-h> <C-w>h
-inoremap <M-j> <C-w>j
-inoremap <M-k> <C-w>k
-inoremap <M-l> <C-w>l
-nnoremap <M-h> <C-w>h
-nnoremap <M-j> <C-w>j
-nnoremap <M-k> <C-w>k
-nnoremap <M-l> <C-w>l
-
-noremap <leader><leader>h <C-w>h
-noremap <leader><leader>j <C-w>j
-noremap <leader><leader>k <C-w>k
-noremap <leader><leader>l <C-w>l
+noremap <leader>wh <C-w>h
+noremap <leader>wj <C-w>j
+noremap <leader>wk <C-w>k
+noremap <leader>wl <C-w>l
 
 "
 
@@ -335,12 +308,24 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 "close buffer
-map <leader>c <C-w>q<CR>
+map <leader>wd <C-w>q<CR>
+
+
+noremap <leader>ft :TagbarToggle<CR>
+
+"" GIT
+nmap <leader>gg :G<CR>
+nmap <leader>gc :G commit<CR>
+nmap <leader>gp :G push 
+
+
+
+
 
 " vertical resize
-map <F8> :vertical resize +10<CR>
-map <F7> :vertical resize -10<CR>
-map <F9> :Tagbar<CR>
+" map <F8> :vertical resize +10<CR>
+" map <F7> :vertical resize -10<CR>
+" map <F9> :Tagbar<CR>
 "map _ <c-w>-
 "map + <c-w>+
 " nnoremap <leader><leader>- :vertical resize -10<cr>
@@ -348,14 +333,12 @@ map <F9> :Tagbar<CR>
 " nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 " nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
-nnoremap <leader>s :w<cr>
-inoremap <leader>s <C-c>:w<cr>
+nnoremap <leader>fs :w<cr>
 " list buffers
 nnoremap <silent> <leader>b :Buffers<CR>
 
-"" Copy
+"" Copy/Cut to clipboard
 noremap YY "+y<CR>
-noremap <leader>p "+gP<CR>
 noremap XX "+x<CR>
 
 " nmap <leader>T :GoTestFunc<CR>
@@ -364,10 +347,10 @@ noremap XX "+x<CR>
 
 " split horizontal
 map <leader>wv :vs<CR>
-map <leader>w- :sp<CR>
+map <leader>wg :sp<CR>
 
 noremap <leader>et :Lex<CR>
-noremap <leader>ee :NERDTreeToggle<CR>
+noremap <leader>ee :CocCommand explorer<CR>
 "nmap <F8> :TagbarToggle<CR>
 " Search for selected text
 vnoremap // y/<C-R>"<CR>
@@ -375,7 +358,7 @@ vnoremap // y/<C-R>"<CR>
 vnoremap <leader>rg y:Rg <C-R>"<CR>
 
 "  fuzzy find
-nnoremap <silent> <leader>f :FZF -m<CR>
+nnoremap <silent> <leader>ff :FZF -m<CR>
 
 noremap <leader>q :q!<cr>
 
@@ -384,13 +367,9 @@ noremap <leader>q :q!<cr>
 nnoremap Q @q
 vnoremap Q :norm @q<cr>
 
-" Map Import comamnd below
-imap <leader><TAB> <ESC>:Import<cr>
-map <leader><TAB> :Import<cr>
 
-
-nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
-nnoremap <leader>d :call fzf#vim#tags('^' . expand('<cword>'), {'options': '--exact --select-1 --exit-0 +i'})<CR>
+"nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+"nnoremap <leader>d :call fzf#vim#tags('^' . expand('<cword>'), {'options': '--exact --select-1 --exit-0 +i'})<CR>
 "Ale
 " nmap <silent> <C-J> :ALENext<CR>
 " nmap <silent> <C-K> :ALEPrevious<CR>
@@ -400,21 +379,22 @@ nnoremap <leader>d :call fzf#vim#tags('^' . expand('<cword>'), {'options': '--ex
 " inoremap <expr> <C-k> pumvisible() ? '<C-p>' : 'k'
 
 " autocomplete
+
 "
 " set completeopt=noinsert,menuone
 " You can use Ctrl-O to remap Ctrl-h/j/k/l to move the cursor while in insert mode without using the arrow keys:
-imap <C-h> <C-o>h
-imap <C-l> <C-o>l
+" imap <C-h> <C-o>h
+" imap <C-l> <C-o>l
 
 "" Easy motion"
 let g:EasyMotion_smartcase = 1
-map <leader><leader>s <Plug>(easymotion-sn)
+"map <leader><leader>s <Plug>(easymotion-sn)
 
 " Floaterm
 let g:floaterm_keymap_toggle = '<F12>'
 
 
-nnoremap <leader>r :w <CR>:!g++ -std=c++11 -O2 -Wall % -o %:r && ./%:r<CR>
+"nnoremap <leader>r :w <CR>:!g++ -std=c++11 -O2 -Wall % -o %:r && ./%:r<CR>
 
 source ~/dotfiles/coc.vim
 
@@ -438,7 +418,7 @@ let g:go_highlight_methods = 0
 let g:go_highlight_operators = 0
 let g:go_highlight_structs = 0
 let g:go_highlight_types = 0
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "gofmt"
 
 let g:go_rename_command = 'gopls'
 let g:go_def_mode='gopls'
@@ -583,7 +563,18 @@ autocmd FileType cpp ClangFormatAutoEnable
 "       \ 'gitcommit': 1
 "       \}
 
-"set list
-"set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,space:·,trail:·
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=0
+    au InsertLeave * set timeoutlen=1000
+augroup END
+
+set list
+set listchars=tab:\·\ "there is a space after the last ·"
+"set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,space:·,trail:·
+
+" ctags
+set tags=tags

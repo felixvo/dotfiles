@@ -1,6 +1,8 @@
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-pyright', 'coc-prettier', 'coc-tsserver', 'coc-go', 'coc-solargraph', 'coc-snippets', 'coc-explorer', 'coc-yaml']
+
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
@@ -110,3 +112,11 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 "nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
+autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
+autocmd FileType go nmap gtjx :CocCommand go.tags.remove json<cr>
+autocmd FileType go nmap gtf :CocCommand go.tags.add form<cr>
+autocmd FileType go nmap gtfx :CocCommand go.tags.remove form<cr>
+autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
+
