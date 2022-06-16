@@ -7,10 +7,10 @@ set surround
 " ys$" => surround to end of line
 " in visual mode, start with S and then type the surround char
 set multiple-cursors
-" <A-n>, next
-" <A-x>, skip
-" <A-p>, previous
-" g<A-n> 
+<C-n>, next
+<C-x>, skip
+<C-p>, previous
+g<C-n> 
 "
 map <leader>s :action Macro.FormatAndSave<CR>
 map <leader>f :action GotoFile<CR>

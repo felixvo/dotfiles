@@ -41,6 +41,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
+Plug 'flazz/vim-colorschemes'
 Plug 'voldikss/vim-floaterm'
 
 Plug 'rhysd/vim-clang-format'
@@ -48,7 +49,7 @@ Plug 'rhysd/vim-clang-format'
 "Plug 'Yggdroot/indentLine'
 "Plug 'yegappan/mru'
 
-Plug 'metakirby5/codi.vim'
+"Plug 'metakirby5/codi.vim'
 
 " Vim start screen
 Plug 'mhinz/vim-startify'
@@ -56,7 +57,7 @@ Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " CLOJURE
-Plug 'tpope/vim-fireplace'
+"Plug 'tpope/vim-fireplace'
 
 "Plug 'wellle/context.vim'
 "
@@ -102,9 +103,6 @@ endif
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 "Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 
-" Use release branch (Recommend)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 
 "*****************************************************************************
 "*****************************************************************************
@@ -125,7 +123,7 @@ syntax on
 "" GENERAL
 " Color/Theme
 set background=dark
-colorscheme gruvbox
+colorscheme OceanicNext
 "colorscheme gruvbox-material
 "colorscheme base16-gruvbox-dark-hard
 "colorscheme github
@@ -165,7 +163,7 @@ set path+=**
 
 set wildmenu
 
-set hlsearch
+set nohlsearch
 set hidden
 
 set cursorline
@@ -210,7 +208,6 @@ set laststatus=0                        " Always display the status line
 set updatetime=1000
 set timeoutlen=500
 set ttimeoutlen=1
-set nohlsearch
 set incsearch
 set scrolloff=5
 
@@ -506,8 +503,8 @@ let g:airline#extensions#ale#enabled = 1
 " easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " Gif config
-"map  / <Plug>(easymotion-sn)
-"omap / <Plug>(easymotion-tn)
+" map  / <Plug>(easymotion-sn)
+" omap / <Plug>(easymotion-tn)
 " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
 " Without these mappings, `n` & `N` works fine. (These mappings just provide
 " different highlight method and have some other features )
