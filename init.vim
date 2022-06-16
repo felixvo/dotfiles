@@ -27,7 +27,7 @@ call plug#begin(expand('~/.vim/plugged'))
 "" Plug install packages
 "*****************************************************************************
 "Plug 'morhetz/gruvbox'
-"Plug 'flazz/vim-colorschemes'
+Plug 'flazz/vim-colorschemes'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -38,8 +38,7 @@ Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
-"Plug 'buoto/gotests-vim'
-Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
 ""Plug 'liuchengxu/vim-which-key'
 "Plug 'terryma/vim-multiple-cursors'
 "Plug 'francoiscabrol/ranger.vim'
@@ -54,6 +53,14 @@ Plug 'nvim-telescope/telescope.nvim'
 ""Plug 'yegappan/mru'
 
 ""Plug 'metakirby5/codi.vim'
+
+"LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'hrsh7th/nvim-cmp' " Autocompletion plugin
+Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp
+Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp
+Plug 'L3MON4D3/LuaSnip' " Snippets plugin
 
 "" Vim start screen
 Plug 'mhinz/vim-startify'
@@ -104,8 +111,11 @@ Plug 'scrooloose/nerdtree'
 "" go
 """ Go Lang Bundle
 "Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+"Plug 'buoto/gotests-vim'
 ""Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 
+"" RUST"
+Plug 'simrat39/rust-tools.nvim'
 
 ""*****************************************************************************
 ""*****************************************************************************
@@ -241,8 +251,8 @@ set ttyfast
 "" GENERAL
 " Color/Theme
 set background=dark
-colorscheme gruvbox8_hard
-
+"colorscheme gruvbox8_hard
+colorscheme OceanicNext
 
 
 ""Here's a handy command to remove whitespaces on save.
@@ -327,7 +337,7 @@ nmap <leader>gb :G branch<CR>
 nmap <leader>gn :G checkout -b 
 nmap <leader>gd :G diff<CR>
 nmap <leader>gc :G commit<CR>
-nmap <leader>gp :G push 
+nmap <leader>gp :G push<CR>
 
 
 "" vertical resize
