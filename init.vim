@@ -37,7 +37,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
-"Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 "Plug 'buoto/gotests-vim'
 Plug 'jiangmiao/auto-pairs'
 ""Plug 'liuchengxu/vim-which-key'
@@ -159,6 +159,11 @@ set number " vertical left line number
 set path+=**
 
 set wildmenu
+" fold
+set foldmethod=indent
+set foldlevel=3
+set foldclose=all
+set nofoldenable
 
 set nohlsearch
 set hidden
@@ -203,8 +208,8 @@ set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
 set laststatus=0                        " Always display the status line
 set updatetime=50
-set timeoutlen=200
-set ttimeoutlen=500
+set timeoutlen=1000
+set ttimeoutlen=50
 set incsearch
 set scrolloff=5
 
@@ -315,13 +320,14 @@ map <leader>wd <C-w>q<CR>
 
 "noremap <leader>ft :TagbarToggle<CR>
 
+
 """ GIT
 nmap <leader>gg :G<CR>
+nmap <leader>gb :G branch<CR>
+nmap <leader>gn :G checkout -b 
+nmap <leader>gd :G diff<CR>
 nmap <leader>gc :G commit<CR>
 nmap <leader>gp :G push 
-
-
-
 
 
 "" vertical resize
@@ -335,7 +341,7 @@ nmap <leader>gp :G push
 "" nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 "" nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
-"nnoremap <leader>fs :w<cr>
+nnoremap <leader>fs :w<cr>
 "" list buffers
 "nnoremap <silent> <leader>b :Buffers<CR>
 
@@ -364,7 +370,7 @@ map <leader>wg :sp<CR>
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Using Lua functions
 "
@@ -388,8 +394,8 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 "" nmap <silent> <C-K> :ALEPrevious<CR>
 
 "" show autocomplete
-"" inoremap <expr> <C-j> pumvisible() ? '<C-n>' : 'j'
-"" inoremap <expr> <C-k> pumvisible() ? '<C-p>' : 'k'
+"inoremap <expr> <C-j> pumvisible() ? '<C-n>' : 'j'
+"inoremap <expr> <C-k> pumvisible() ? '<C-p>' : 'k'
 
 "" autocomplete
 
@@ -399,9 +405,6 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 "" imap <C-h> <C-o>h
 "" imap <C-l> <C-o>l
 
-""" Easy motion"
-"let g:EasyMotion_smartcase = 1
-""map <leader><leader>s <Plug>(easymotion-sn)
 
 "" Floaterm
 "let g:floaterm_keymap_toggle = '<F12>'
@@ -438,8 +441,8 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 "let g:go_info_mode='gopls'
 
 """ https://stackoverflow.com/a/1625850
-"set backupdir=~/vimtmp//,.
-"set directory=~/vimtmp//,.
+set backupdir=~/vimtmp//,.
+set directory=~/vimtmp//,.
 
 ""
 "" Godef
@@ -476,7 +479,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 "endif
 
 
-"set signcolumn=yes
+set signcolumn=yes
 
 ""Import Go Packages
 "augroup gopkgs
@@ -498,12 +501,12 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 """ Netrw
 "" https://shapeshed.com/vim-netrw/
-"let g:netrw_banner       = 0
-"let g:netrw_liststyle    = 0
-"let g:netrw_browse_split = 0
-"let g:netrw_altv         = 1
-"let g:netrw_winsize      = 25
-"let g:netrw_usetab       = 1
+let g:netrw_banner       = 0
+let g:netrw_liststyle    = 0
+let g:netrw_browse_split = 0
+let g:netrw_altv         = 1
+let g:netrw_winsize      = 25
+let g:netrw_usetab       = 1
 
 """ NERDTree
 let NERDTreeMinimalUI = 1
@@ -513,15 +516,18 @@ let NERDTreeDirArrows = 1
 "" let g:ale_sign_error = '⤫'
 "" let g:ale_sign_warning = '⚠'
 
-"" Enable integration with airline.
+" Enable integration with airline.
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='luna'
 
 "" easymotion
+""" Easy motion"
+let g:EasyMotion_smartcase = 1
+"map <leader><leader>s <Plug>(easymotion-sn)
 "let g:EasyMotion_do_mapping = 0 " Disable default mappings
 "" Gif config
-"" map  / <Plug>(easymotion-sn)
-"" omap / <Plug>(easymotion-tn)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
 "" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
 "" Without these mappings, `n` & `N` works fine. (These mappings just provide
 "" different highlight method and have some other features )
@@ -577,11 +583,11 @@ let g:airline_theme='luna'
 ""       \ 'gitcommit': 1
 ""       \}
 
-"" augroup FastEscape
-""     autocmd!
-""     au InsertEnter * set timeoutlen=0
-""     au InsertLeave * set timeoutlen=500
-"" augroup END
+" augroup FastEscape
+"     autocmd!
+"     au InsertEnter * set timeoutlen=0
+"     au InsertLeave * set timeoutlen=500
+" augroup END
 
 "set list
 "set listchars=tab:\·\ "there is a space after the last ·"
@@ -589,3 +595,4 @@ let g:airline_theme='luna'
 
 "" ctags
 "set tags=tags
+
