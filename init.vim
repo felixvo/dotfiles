@@ -81,7 +81,9 @@ Plug 'mhinz/vim-startify'
 "Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 ""Plug 'godlygeek/tabular'
 
-Plug 'scrooloose/nerdtree'
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+"Plug 'scrooloose/nerdtree'
 
 """ Snippets
 ""Plug 'SirVer/ultisnips'
@@ -160,6 +162,7 @@ endif
 "
 set encoding=utf-8
 
+set termguicolors " this variable must be enabled for colors to be applied properly
 "https://unix.stackexchange.com/questions/186166/delete-key-doesnt-work-on-vim-insert-mode-for-deleting-previously-typed-conte
 "
 set backspace=indent,eol,start
@@ -606,3 +609,8 @@ omap / <Plug>(easymotion-tn)
 "" ctags
 "set tags=tags
 
+"NvimTree
+
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>

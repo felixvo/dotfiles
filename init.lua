@@ -123,3 +123,5 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+require'nvim-tree'.setup {}
