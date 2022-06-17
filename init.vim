@@ -85,6 +85,7 @@ Plug 'mhinz/vim-startify'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 ""Plug 'godlygeek/tabular'
 
+Plug 'kevinhwang91/nvim-bqf'
 
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
@@ -533,8 +534,8 @@ let g:netrw_winsize      = 25
 let g:netrw_usetab       = 1
 
 """ NERDTree
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+" let NERDTreeMinimalUI = 1
+" let NERDTreeDirArrows = 1
 
 "" Error and warning signs.
 "" let g:ale_sign_error = '⤫'
@@ -622,8 +623,6 @@ nmap <leader>j <Plug>(easymotion-overwin-f2)
 
 "NvimTree
 
-nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
+nnoremap <leader>t :NvimTreeToggle<CR>
 
 
