@@ -41,6 +41,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'windwp/nvim-autopairs'
 ""Plug 'liuchengxu/vim-which-key'
 "Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 "Plug 'francoiscabrol/ranger.vim'
 "Plug 'rbgrouleff/bclose.vim'
 
@@ -62,6 +63,8 @@ Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp
 Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp
 Plug 'L3MON4D3/LuaSnip' " Snippets plugin
 
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 "" Vim start screen
 Plug 'mhinz/vim-startify'
 "" Use release branch (recommend)
@@ -79,7 +82,9 @@ Plug 'mhinz/vim-startify'
 
 "" Markdown
 "Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 ""Plug 'godlygeek/tabular'
+
 
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
@@ -622,22 +627,3 @@ nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
 
-
-
-lua <<EOF
-  function OrgImports(wait_ms)
-    local params = vim.lsp.util.make_range_params()
-    params.context = {only = {"source.organizeImports"}}
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
-    for _, res in pairs(result or {}) do
-      for _, r in pairs(res.result or {}) do
-        if r.edit then
-          vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
-        else
-          vim.lsp.buf.execute_command(r.command)
-        end
-      end
-    end
-  end
-EOF
-autocmd BufWritePre *.go lua OrgImports(1000)
