@@ -285,6 +285,7 @@ let mapleader=' '
 """ no one is really happy until you have this shortcuts
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
+cnoreabbrev q1 q!
 cnoreabbrev Qall! qall!
 cnoreabbrev Wq wq
 cnoreabbrev Wa wa
@@ -329,6 +330,7 @@ map <leader>cc :Commentary<CR>
 
 ""close buffer
 map <leader>wd <C-w>q<CR>
+map <leader>wD <C-w>o<CR>
 
 
 "noremap <leader>ft :TagbarToggle<CR>
@@ -383,8 +385,12 @@ map <leader>wg :sp<CR>
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+"buffers
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>bd :bd<cr>
+map <C-h> :bp<CR>
+map <C-l> :bn<CR>
 " Using Lua functions
 "
 " nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
@@ -539,8 +545,8 @@ let g:EasyMotion_smartcase = 1
 "map <leader><leader>s <Plug>(easymotion-sn)
 "let g:EasyMotion_do_mapping = 0 " Disable default mappings
 "" Gif config
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
+" map  / <Plug>(easymotion-sn)
+" omap / <Plug>(easymotion-tn)
 "" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
 "" Without these mappings, `n` & `N` works fine. (These mappings just provide
 "" different highlight method and have some other features )
@@ -549,7 +555,7 @@ omap / <Plug>(easymotion-tn)
 ""
 "" Jump to anywhere you want with minimal keystrokes, with just one key binding.
 "" `s{char}{label}`
-"nmap s <Plug>(easymotion-overwin-f)
+nmap <leader>j <Plug>(easymotion-overwin-f2)
 "" or
 "" `s{char}{char}{label}`
 "" Need one more keystroke, but on average, it may be more comfortable.
@@ -614,3 +620,24 @@ omap / <Plug>(easymotion-tn)
 nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
+
+
+
+
+lua <<EOF
+  function OrgImports(wait_ms)
+    local params = vim.lsp.util.make_range_params()
+    params.context = {only = {"source.organizeImports"}}
+    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+    for _, res in pairs(result or {}) do
+      for _, r in pairs(res.result or {}) do
+        if r.edit then
+          vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
+        else
+          vim.lsp.buf.execute_command(r.command)
+        end
+      end
+    end
+  end
+EOF
+autocmd BufWritePre *.go lua OrgImports(1000)
