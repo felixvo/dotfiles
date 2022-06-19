@@ -56,7 +56,7 @@ vim.o.scrolloff   = 5
 
 vim.o.showmode = false -- We don't need to see things like -- INSERT -- anymore
 -- Directories for swp files
-vim.o.backup = true
+vim.o.backup = false
 vim.o.swapfile = true
 vim.o.writebackup = false
 vim.o.cmdheight = 2 -- More space for displaying messages

@@ -5,6 +5,11 @@ ln -sf ~/dotfiles/init.lua ~/.config/nvim/init.lua
 ln -sf ~/dotfiles/lua ~/.config/nvim/lua
 ```
 
+## Kitty Term
+```
+ln -sf ~/dotfiles/kitty.conf ~/.config/kitty/kitty.conf
+```
+
 ## Fonts
 ```
 brew tap homebrew/cask-fonts
