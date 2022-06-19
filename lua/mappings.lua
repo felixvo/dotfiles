@@ -1,0 +1,79 @@
+local function map(mode, shortcut, command)
+  vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
+end
+
+local function nmap(shortcut, command)
+  map('n', shortcut, command)
+end
+
+local function vmap(shortcut, command)
+  map('v', shortcut, command)
+end
+
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+nmap('<space>e', vim.diagnostic.open_float)
+nmap('[d', vim.diagnostic.goto_prev)
+nmap(']d', vim.diagnostic.goto_next)
+nmap('<space>q', vim.diagnostic.setloclist)
+
+
+
+-- Find files using Telescope command-line sugar.
+nmap('<leader>ff', ":lua require('telescope.builtin').find_files()<cr>")
+nmap('<leader>fg', ":lua require('telescope.builtin').live_grep()<cr>")
+nmap('<leader>fb', ":lua require('telescope.builtin').buffers()<cr>")
+nmap('<leader>fh', ":lua require('telescope.builtin').help_tags()<cr>")
+
+
+
+-- buffers
+nmap('<leader>bd', ':bd<cr>')
+nmap('<C-h>', ':bp<CR>')
+nmap('<C-l>', ':bn<CR>')
+
+nmap('<leader>Q', ':q!<cr>')
+
+
+-- This mapping makes macros even easier to remember
+-- hit qq to record, q to stop recording, and Q to apply.
+nmap('Q', '@q')
+vmap('Q', ':norm @q<cr>')
+
+-- NvimTree
+nmap('<leader>t', ':NvimTreeToggle<cr>')
+
+
+nmap('<leader>j', '<Plug>(easymotion-overwin-f2)')
+nmap('<leader>wv', ':vs<cr>')
+nmap('<leader>wg', ':sp<cr>')
+
+nmap('YY', '"+y<cr>')
+nmap('XX', '"+x<cr>')
+nmap('<leader>fs', ':w<cr>')
+
+
+
+-- GIT
+nmap('<leader>gg', ':G<CR>')
+nmap('<leader>gb', ':G branch<CR>')
+nmap('<leader>gn', ':G checkout -b')
+nmap('<leader>gd', ':G diff<CR>')
+nmap('<leader>gc', ':G commit<CR>')
+nmap('<leader>gp', ':G push<CR>')
+
+
+-- close buffer
+nmap('<leader>wd', '<C-w>q<CR>')
+nmap('<leader>wD', '<C-w>o<CR>')
+
+
+--  moving line up/down
+vmap('J', ":m '>+1<CR>gv=gv")
+vmap('K', ":m '<-2<CR>gv=gv")
+
+nmap('<leader>cc', ':Commentary<CR>')
+
+
+vmap('<Leader>a=', ':Tabularize /=<CR>')
+vmap('<Leader>a:', ':Tabularize /:\zs<CR>')
