@@ -1,12 +1,8 @@
-## Setup
 
+## Setup Neovim
 ```
-./setup.sh
-```
-
-## Coc vim
-```
-:CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-go
+ln -sf ~/dotfiles/init.lua ~/.config/nvim/init.lua
+ln -sf ~/dotfiles/lua ~/.config/nvim/lua
 ```
 
 ## Fonts
