@@ -3,6 +3,7 @@
 ```
 ln -sf ~/dotfiles/init.lua ~/.config/nvim/init.lua
 ln -sf ~/dotfiles/lua ~/.config/nvim/lua
+ln -s ~/dotfiles/colors ~/.config/nvim/colors
 ```
 
 ## Kitty Term

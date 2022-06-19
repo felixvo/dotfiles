@@ -73,7 +73,9 @@ vim.g.floaterm_height = 0.8
 vim.cmd([[ 
 highlight clear SignColumn
 highlight clear LineNr
-colorscheme gruvbox8_hard
+"" colorscheme base16-oceanicnext
+"" colorscheme base16-material-darker
+colorscheme gruvbox8_hard 
 
 ""*****************************************************************************
 """ Abbreviations

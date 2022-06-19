@@ -1,17 +1,17 @@
 local function map(mode, shortcut, command)
-  vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
+    vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
 end
 
 local function nmap(shortcut, command)
-  map('n', shortcut, command)
+    map('n', shortcut, command)
 end
 
 local function vmap(shortcut, command)
-  map('v', shortcut, command)
+    map('v', shortcut, command)
 end
 
 local function tmap(shortcut, command)
-  map('t', shortcut, command)
+    map('t', shortcut, command)
 end
 
 -- Mappings.
@@ -33,8 +33,8 @@ nmap('<leader>fh', ":lua require('telescope.builtin').help_tags()<cr>")
 
 -- buffers
 nmap('<leader>bd', ':bd<cr>')
-nmap('<C-h>', ':bp<CR>')
-nmap('<C-l>', ':bn<CR>')
+nmap('<C-h>', ':BufferPrevious<cr>')
+nmap('<C-l>', ':BufferNext<cr>')
 
 nmap('<leader>Q', ':q!<cr>')
 
