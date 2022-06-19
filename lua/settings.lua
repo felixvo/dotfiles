@@ -4,7 +4,7 @@ vim.o.relativenumber = false
 vim.o.wrap           = false
 vim.o.expandtab      = true
 vim.o.incsearch      = true
-vim.o.tabstop        = 2
+vim.o.tabstop        = 4
 vim.o.cursorline     = true
 vim.o.ignorecase     = true
 vim.o.hlsearch       = false
@@ -66,6 +66,9 @@ vim.o.ttyfast = true
 
 vim.g.background = 'dark'
 
+-- floaterm settings
+vim.g.floaterm_width = 0.8
+vim.g.floaterm_height = 0.8
 
 vim.cmd([[ 
 highlight clear SignColumn

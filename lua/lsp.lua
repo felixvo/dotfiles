@@ -18,7 +18,7 @@ end
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    vim.api.nvim_command("au BufWritePost <buffer> lua vim.lsp.buf.formatting_sync(nil,1000)")
+    vim.api.nvim_command("au BufWritePost * lua vim.lsp.buf.formatting_sync(nil,1000)")
     vim.api.nvim_command("au BufWritePre *.go lua OrgImports(1000)")
 
     -- Mappings.

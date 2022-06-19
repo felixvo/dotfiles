@@ -18,7 +18,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
   use 'junegunn/gv.vim'
-  use 'tpope/vim-vinegar'
+  --  use 'tpope/vim-vinegar'
   use 'tpope/vim-surround'
   use 'easymotion/vim-easymotion'
   use 'windwp/nvim-autopairs'
@@ -37,6 +37,7 @@ require('packer').startup(function(use)
   use 'simrat39/rust-tools.nvim'
   use 'godlygeek/tabular'
   use 'romgrk/barbar.nvim'
+  use 'voldikss/vim-floaterm'
 
 
   -- Automatically set up your configuration after cloning packer.nvim
@@ -51,11 +52,11 @@ require 'bufferline'.setup {
   -- if set to 'numbers', will show buffer index in the tabline
   -- if set to 'both', will show buffer index and icons in the tabline
   icons = false,
+  -- Enable/disable close button
+  closable = false,
 }
-require("nvimtree")
 require("nvim-autopairs").setup {}
-
+require("lsp")
+require("nvimtree")
 require('settings')
 require('mappings')
-
-require("lsp")

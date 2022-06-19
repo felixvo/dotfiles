@@ -10,6 +10,10 @@ local function vmap(shortcut, command)
   map('v', shortcut, command)
 end
 
+local function tmap(shortcut, command)
+  map('t', shortcut, command)
+end
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 nmap('<space>e', vim.diagnostic.open_float)
@@ -48,8 +52,8 @@ nmap('<leader>j', '<Plug>(easymotion-overwin-f2)')
 nmap('<leader>wv', ':vs<cr>')
 nmap('<leader>wg', ':sp<cr>')
 
-nmap('YY', '"+y<cr>')
-nmap('XX', '"+x<cr>')
+vmap('YY', '"+y<cr>')
+vmap('XX', '"+x<cr>')
 nmap('<leader>fs', ':w<cr>')
 
 
@@ -72,8 +76,13 @@ nmap('<leader>wD', '<C-w>o<CR>')
 vmap('J', ":m '>+1<CR>gv=gv")
 vmap('K', ":m '<-2<CR>gv=gv")
 
-nmap('<leader>cc', ':Commentary<CR>')
+vmap('<leader>c', ':Commentary<CR>')
+nmap('<leader>c', ':Commentary<CR>')
 
 
 vmap('<Leader>a=', ':Tabularize /=<CR>')
 vmap('<Leader>a:', ':Tabularize /:\zs<CR>')
+
+
+-- floatterm
+nmap('<F12>', ':FloatermToggle<cr>')
