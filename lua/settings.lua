@@ -17,11 +17,9 @@ vim.o.numberwidth    = 4
 vim.o.termguicolors  = true
 vim.o.colorcolumn    = '100'
 vim.o.showmode       = false
-vim.o.showtabline    = 2
 vim.o.signcolumn     = 'yes'
 vim.o.mouse          = 'a'
 vim.o.ruler          = false
-vim.o.encoding       = 'utf8'
 vim.o.wildmenu       = true
 vim.o.hidden         = true
 vim.o.cursorline     = true
@@ -34,7 +32,6 @@ vim.o.foldenable  = false
 
 vim.o.backspace = 'indent,eol,start'
 vim.o.termguicolors = true
-vim.o.laststatus = 1
 --  When searching try to be smart about cases
 vim.o.smartcase = true
 
@@ -47,7 +44,6 @@ vim.o.smarttab    = true -- Makes tabbing smarter will realize you have 2 vs 4
 vim.o.expandtab   = true -- Converts tabs to spaces
 vim.o.smartindent = true -- Makes indenting smart
 vim.o.autoindent  = true -- Good auto indent
-vim.o.laststatus  = 0 -- Always display the status line
 vim.o.updatetime  = 50
 vim.o.timeoutlen  = 1000
 vim.o.ttimeoutlen = 50
@@ -59,7 +55,7 @@ vim.o.showmode = false -- We don't need to see things like -- INSERT -- anymore
 vim.o.backup = false
 vim.o.swapfile = true
 vim.o.writebackup = false
-vim.o.cmdheight = 2 -- More space for displaying messages
+vim.o.cmdheight = 1 -- More space for displaying messages
 vim.o.scrolljump = 5
 vim.o.lazyredraw = true
 vim.o.ttyfast = true

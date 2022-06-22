@@ -6,15 +6,19 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 
-require('packer').startup(function(use)
+require('packer').startup({ function(use)
     -- My plugins here
-    -- use 'foo1/bar1.nvim'
-    -- use 'foo2/bar2.nvim'
     use 'wbthomason/packer.nvim'
     use 'lifepillar/vim-gruvbox8'
-    use 'vim-airline/vim-airline'
-    use 'vim-airline/vim-airline-themes'
-    use 'airblade/vim-gitgutter'
+
+    -- use 'vim-airline/vim-airline'
+    -- use 'vim-airline/vim-airline-themes'
+
+    -- use 'nvim-lualine/lualine.nvim'
+    use 'nvim-lualine/lualine.nvim'
+
+    -- use 'airblade/vim-gitgutter'
+    use 'lewis6991/gitsigns.nvim'
     use 'tpope/vim-commentary'
     use 'tpope/vim-fugitive'
     use 'junegunn/gv.vim'
@@ -54,12 +58,40 @@ require('packer').startup(function(use)
     use "lukas-reineke/indent-blankline.nvim"
 
 
+    -- still has open issue https://github.com/folke/trouble.nvim/pull/175
+    -- use "folke/trouble.nvim"
+
+
+    -- Lua
+    -- use {
+    --     "folke/which-key.nvim",
+    --     config = function()
+    --         require("which-key").setup {
+    --             -- your configuration comes here
+    --             -- or leave it empty to use the default settings
+    --             -- refer to the configuration section below
+    --         }
+    --     end
+    -- }
+
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
         require('packer').sync()
     end
-end)
+end,
+    config = {
+        display = {
+            open_fn = require('packer.util').float,
+        }
+    },
+    profile = { -- https://github.com/wbthomason/packer.nvim#profiling
+        enable = true,
+        threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
+    }
+}
+)
 
 require 'bufferline'.setup {
     -- Enable/disable icons
@@ -160,3 +192,28 @@ require("indent_blankline").setup {
     show_current_context = true,
     show_current_context_start = false,
 }
+require('gitsigns').setup {
+    signs = {
+        add          = { hl = 'GitSignsAdd', text = '+', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
+        change       = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
+        delete       = { hl = 'GitSignsDelete', text = '-', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+        topdelete    = { hl = 'GitSignsDelete', text = '^', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+        changedelete = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
+    },
+}
+require('evalline')
+
+-- require("trouble").setup {
+--     icons = false,
+--     fold_open = "v", -- icon used for open folds
+--     fold_closed = ">", -- icon used for closed folds
+--     indent_lines = false, -- add an indent guide below the fold icons
+--     signs = {
+--         -- icons / text used for a diagnostic
+--         error = "error",
+--         warning = "warn",
+--         hint = "hint",
+--         information = "info"
+--     },
+--     use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
+-- }

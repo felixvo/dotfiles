@@ -83,8 +83,8 @@ nmap('<leader>wD', '<C-w>o<CR>')
 vmap('J', ":m '>+1<CR>gv=gv")
 vmap('K', ":m '<-2<CR>gv=gv")
 
-vmap('<leader>c', ':Commentary<CR>')
-nmap('<leader>c', ':Commentary<CR>')
+vmap('<leader>cc', ':Commentary<CR>')
+nmap('<leader>cc', ':Commentary<CR>')
 
 
 vmap('<Leader>a=', ':Tabularize /=<CR>')
