@@ -70,6 +70,8 @@ vim.g.background = 'dark'
 vim.g.floaterm_width = 0.8
 vim.g.floaterm_height = 0.8
 
+vim.o.guifont = "Cascadia Mono:h15"
+
 vim.cmd([[ 
 highlight clear SignColumn
 highlight clear LineNr

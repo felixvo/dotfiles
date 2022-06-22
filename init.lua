@@ -24,7 +24,10 @@ require('packer').startup(function(use)
     use 'windwp/nvim-autopairs'
     use 'mg979/vim-visual-multi'
     use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
     use 'neovim/nvim-lspconfig'
     use 'williamboman/nvim-lsp-installer'
     use 'hrsh7th/nvim-cmp'
@@ -42,6 +45,12 @@ require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate go'
     }
+
+
+    use {
+        "ray-x/lsp_signature.nvim",
+    }
+    use 'ahmedkhalf/project.nvim'
 
 
     -- Automatically set up your configuration after cloning packer.nvim
@@ -66,9 +75,51 @@ require('settings')
 require('mappings')
 
 
+require('telescope').setup {
+    defaults = {
+        -- Default configuration for telescope goes here:
+        -- config_key = value,
+        mappings = {
+            i = {
+                -- map actions.which_key to <C-h> (default: <C-/>)
+                -- actions.which_key shows the mappings for your picker,
+                -- e.g. git_{create, delete, ...}_branch for the git_branches picker
+                ["<ESC>"] = "close",
+                ["<C-k>"] = "move_selection_previous",
+                ["<C-j>"] = "move_selection_next",
+
+            }
+        }
+    },
+}
+
+require("project_nvim").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+    -- Telescope mappings
+    --
+    -- project.nvim comes with the following mappings:
+
+    -- Normal mode	Insert mode	Action
+    -- f	<c-f>	find_project_files
+    -- b	<c-b>	browse_project_files
+    -- d	<c-d>	delete_project
+    -- s	<c-s>	search_in_project_files
+    -- r	<c-r>	recent_project_files
+    -- w	<c-w>	change_working_directory
+
+    -- When set to false, you will get a message when project.nvim changes your
+    -- directory.
+    silent_chdir = false,
+}
+
+require('telescope').load_extension('projects')
+
+
 require 'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
-    ensure_installed = { "go", "lua", "rust" },
+    ensure_installed = { "go", "lua", "rust", "javascript", "typescript", "html" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -98,3 +149,7 @@ require 'nvim-treesitter.configs'.setup {
         additional_vim_regex_highlighting = false,
     },
 }
+
+require "lsp_signature".setup({
+
+})

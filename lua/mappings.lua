@@ -10,6 +10,10 @@ local function vmap(shortcut, command)
     map('v', shortcut, command)
 end
 
+local function imap(shortcut, command)
+    map('i', shortcut, command)
+end
+
 local function tmap(shortcut, command)
     map('t', shortcut, command)
 end
@@ -26,13 +30,16 @@ nmap('<space>q', vim.diagnostic.setloclist)
 -- Find files using Telescope command-line sugar.
 nmap('<leader>ff', ":lua require('telescope.builtin').find_files()<cr>")
 nmap('<leader>fg', ":lua require('telescope.builtin').live_grep()<cr>")
-nmap('<leader>fb', ":lua require('telescope.builtin').buffers()<cr>")
+nmap('<leader>bb', ":lua require('telescope.builtin').buffers()<cr>")
 nmap('<leader>fh', ":lua require('telescope.builtin').help_tags()<cr>")
+
+-- projects mapping
+nmap('<leader>pp', ":Telescope projects<cr>")
 
 
 
 -- buffers
-nmap('<leader>bd', ':bd<cr>')
+nmap('<leader>bd', ':BufferClose<cr>')
 nmap('<C-h>', ':BufferPrevious<cr>')
 nmap('<C-l>', ':BufferNext<cr>')
 
