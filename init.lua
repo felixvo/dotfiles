@@ -39,7 +39,7 @@ require('packer').startup({ function(use)
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
     use 'mhinz/vim-startify'
-    use 'kevinhwang91/nvim-bqf'
+    --    use 'kevinhwang91/nvim-bqf'
     use 'kyazdani42/nvim-tree.lua'
     use 'simrat39/rust-tools.nvim'
     use 'godlygeek/tabular'
@@ -60,6 +60,7 @@ require('packer').startup({ function(use)
 
     -- still has open issue https://github.com/folke/trouble.nvim/pull/175
     -- use "folke/trouble.nvim"
+    use 'felixvo/trouble.nvim'
 
 
     -- Lua
@@ -120,8 +121,7 @@ require('telescope').setup {
                 ["<ESC>"] = "close",
                 ["<C-k>"] = "move_selection_previous",
                 ["<C-j>"] = "move_selection_next",
-
-            }
+            },
         }
     },
 }
