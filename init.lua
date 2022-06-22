@@ -51,6 +51,7 @@ require('packer').startup(function(use)
         "ray-x/lsp_signature.nvim",
     }
     use 'ahmedkhalf/project.nvim'
+    use "lukas-reineke/indent-blankline.nvim"
 
 
     -- Automatically set up your configuration after cloning packer.nvim
@@ -153,3 +154,9 @@ require 'nvim-treesitter.configs'.setup {
 require "lsp_signature".setup({
 
 })
+
+require("indent_blankline").setup {
+    -- for example, context is off by default, use this to turn it on
+    show_current_context = true,
+    show_current_context_start = false,
+}
