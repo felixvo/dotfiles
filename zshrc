@@ -5,6 +5,7 @@ source $ZPLUG_HOME/init.zsh
 
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=false
+export TERM=xterm-256color
 
 
 # zsh users
