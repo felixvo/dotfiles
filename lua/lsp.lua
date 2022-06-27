@@ -110,6 +110,11 @@ lspconfig['svelte'].setup {
     flags = lsp_flags,
     capabilities = capabilities,
 }
+lspconfig['tailwindcss'].setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
 
 lspconfig['gopls'].setup {
     on_attach = on_attach,
