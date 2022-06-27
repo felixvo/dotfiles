@@ -54,7 +54,9 @@ nmap('Q', '@q')
 vmap('Q', ':norm @q<cr>')
 
 -- NvimTree
-nmap('<leader>t', ':NvimTreeToggle<cr>')
+nmap('<leader>tt', ':NvimTreeFindFile<cr>')
+nmap('<leader>tg', ':NvimTreeToggle<cr>')
+nmap('<leader>tf', ':NvimTreeFocus<cr>')
 
 
 nmap('<leader>j', '<Plug>(easymotion-overwin-f2)')

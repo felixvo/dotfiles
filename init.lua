@@ -14,6 +14,11 @@ require('packer').startup({ function(use)
     -- My plugins here
     use 'wbthomason/packer.nvim'
     use 'lifepillar/vim-gruvbox8'
+    use 'joshdick/onedark.vim'
+    use 'bluz71/vim-nightfly-guicolors'
+    use 'folke/tokyonight.nvim'
+    use 'savq/melange'
+    use 'jacoborus/tender.vim'
 
     -- use 'vim-airline/vim-airline'
     -- use 'vim-airline/vim-airline-themes'
@@ -66,6 +71,7 @@ require('packer').startup({ function(use)
     -- use "folke/trouble.nvim"
     use 'felixvo/trouble.nvim'
 
+    use 'windwp/nvim-ts-autotag'
 
     -- Lua
     -- use {
@@ -162,7 +168,8 @@ require('telescope').load_extension('projects')
 
 require 'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
-    ensure_installed = { "go", "lua", "rust", "javascript", "typescript", "html" },
+    -- ensure_installed = { "go", "lua", "rust", "javascript", "typescript", "html", "svelte" },
+    ensure_installed = "all",
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -227,3 +234,6 @@ require("trouble").setup {
     },
     use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
 }
+
+
+require('nvim-ts-autotag').setup()

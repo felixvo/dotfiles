@@ -105,6 +105,11 @@ lspconfig['sumneko_lua'].setup {
         }
     }
 }
+lspconfig['svelte'].setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
 
 lspconfig['gopls'].setup {
     on_attach = on_attach,
