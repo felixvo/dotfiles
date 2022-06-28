@@ -1,12 +1,13 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
+    print("setting up Packer...")
     packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
         install_path })
 
     -- https://github.com/wbthomason/packer.nvim/issues/750
     -- fix boostrap not work for new setup
-	vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
+    vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
 end
 
 
@@ -14,6 +15,10 @@ require('packer').startup({ function(use)
 
     -- My plugins here
     use 'wbthomason/packer.nvim'
+
+
+    use 'dstein64/vim-startuptime'
+
     use 'lifepillar/vim-gruvbox8'
     use 'joshdick/onedark.vim'
     use 'bluz71/vim-nightfly-guicolors'
@@ -22,7 +27,7 @@ require('packer').startup({ function(use)
     use 'jacoborus/tender.vim'
 
     --  Speed up loading Lua modules in Neovim to improve startup time.
-    use 'lewis6991/impatient.nvim'
+     use 'lewis6991/impatient.nvim'
 
     -- use 'vim-airline/vim-airline'
     -- use 'vim-airline/vim-airline-themes'

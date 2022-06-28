@@ -77,7 +77,7 @@ end
 
 ins_left {
     function()
-        return '▊'
+        return '|'
     end,
     color = { fg = colors.blue }, -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
@@ -86,7 +86,7 @@ ins_left {
 ins_left {
     -- mode component
     function()
-        return ''
+        return '🖹'
     end,
     color = function()
         -- auto change color according to neovims mode
@@ -136,7 +136,7 @@ ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 ins_left {
     'diagnostics',
     sources = { 'nvim_diagnostic' },
-    symbols = { error = ' ', warn = ' ', info = ' ' },
+    symbols = { error = '× ', warn = '♠ ', info = '! ', hint = '☼' },
     diagnostics_color = {
         color_error = { fg = colors.red },
         color_warn = { fg = colors.yellow },
@@ -155,7 +155,7 @@ ins_left {
 ins_left {
     -- Lsp server name .
     function()
-        local msg = 'No Active Lsp'
+        local msg = '💤'
         local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
         local clients = vim.lsp.get_active_clients()
         if next(clients) == nil then
@@ -169,7 +169,7 @@ ins_left {
         end
         return msg
     end,
-    icon = ' LSP:',
+    icon = '🤓 ',
     color = { fg = '#ffffff', gui = 'bold' },
 }
 
@@ -190,14 +190,14 @@ ins_right {
 
 ins_right {
     'branch',
-    icon = '',
+    icon = 'ᛂ',
     color = { fg = colors.violet, gui = 'bold' },
 }
 
 ins_right {
     'diff',
     -- Is it me or the symbol for modified us really weird
-    symbols = { added = ' ', modified = '柳 ', removed = ' ' },
+    symbols = { added = '+ ', modified = '~ ', removed = '- ' },
     diff_color = {
         added = { fg = colors.green },
         modified = { fg = colors.orange },
