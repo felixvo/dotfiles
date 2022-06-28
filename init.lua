@@ -13,12 +13,13 @@ end
 
 require('packer').startup({ function(use)
 
-    -- My plugins here
+    -- Packer
     use 'wbthomason/packer.nvim'
 
-
+    -- :StartupTime for staruptime detail
     use 'dstein64/vim-startuptime'
 
+    -- colorscheme
     use 'lifepillar/vim-gruvbox8'
     use 'joshdick/onedark.vim'
     use 'bluz71/vim-nightfly-guicolors'
@@ -27,61 +28,65 @@ require('packer').startup({ function(use)
     use 'jacoborus/tender.vim'
 
     --  Speed up loading Lua modules in Neovim to improve startup time.
-     use 'lewis6991/impatient.nvim'
+    use 'lewis6991/impatient.nvim'
 
-    -- use 'vim-airline/vim-airline'
-    -- use 'vim-airline/vim-airline-themes'
-
-    -- use 'nvim-lualine/lualine.nvim'
+    -- statusline written in Lua
+    -- settings in lua/evalline.lua
     use 'nvim-lualine/lualine.nvim'
 
-    -- use 'airblade/vim-gitgutter'
+    -- git plugins
+    -- alternative to 'airblade/vim-gitgutter'
     use 'lewis6991/gitsigns.nvim'
-    use 'tpope/vim-commentary'
     use 'tpope/vim-fugitive'
     use 'junegunn/gv.vim'
-    --  use 'tpope/vim-vinegar'
+
+    -- common plugins
+    use 'tpope/vim-commentary'
     use 'tpope/vim-surround'
     use 'easymotion/vim-easymotion'
     use 'windwp/nvim-autopairs'
     use 'mg979/vim-visual-multi'
+    use 'godlygeek/tabular'
+    use 'voldikss/vim-floaterm'
+    use 'ahmedkhalf/project.nvim'
+    use 'lukas-reineke/indent-blankline.nvim'
+    use 'windwp/nvim-ts-autotag'
+
+    -- tabline
+    use 'romgrk/barbar.nvim'
+
+    -- similar to NERDTree/netrw
+    use 'kyazdani42/nvim-tree.lua'
+
+    -- startup page
+    use 'mhinz/vim-startify'
+
+    -- plenary is a common dependency for other Lua plugins
     use 'nvim-lua/plenary.nvim'
     use {
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
+
+    -- LSP
     use 'neovim/nvim-lspconfig'
     use 'williamboman/nvim-lsp-installer'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
-    use 'mhinz/vim-startify'
-    --    use 'kevinhwang91/nvim-bqf'
-    use 'kyazdani42/nvim-tree.lua'
-    use 'simrat39/rust-tools.nvim'
-    use 'godlygeek/tabular'
-    use 'romgrk/barbar.nvim'
-    use 'voldikss/vim-floaterm'
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate go'
     }
-
-
-    use {
-        "ray-x/lsp_signature.nvim",
-    }
-    use 'ahmedkhalf/project.nvim'
-    use "lukas-reineke/indent-blankline.nvim"
-
+    -- show function signature when you type
+    use 'ray-x/lsp_signature.nvim'
 
     -- still has open issue https://github.com/folke/trouble.nvim/pull/175
     -- use "folke/trouble.nvim"
     use 'felixvo/trouble.nvim'
 
-    use 'windwp/nvim-ts-autotag'
-
+    use 'simrat39/rust-tools.nvim'
     -- Lua
     -- use {
     --     "folke/which-key.nvim",
@@ -112,6 +117,8 @@ end,
     }
 }
 )
+
+require('impatient')
 
 require 'bufferline'.setup {
     -- Enable/disable icons
@@ -174,50 +181,14 @@ require("project_nvim").setup {
 
 require('telescope').load_extension('projects')
 
-
-require 'nvim-treesitter.configs'.setup {
-    -- A list of parser names, or "all"
-    -- ensure_installed = { "go", "lua", "rust", "javascript", "typescript", "html", "svelte" },
-    ensure_installed = "all",
-
-    -- Install parsers synchronously (only applied to `ensure_installed`)
-    sync_install = false,
-
-    -- List of parsers to ignore installing (for "all")
-    ignore_install = {
-        -- "javascript"
-    },
-
-    highlight = {
-        -- `false` will disable the whole extension
-        enable = true,
-
-        -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-        -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-        -- the name of the parser)
-        -- list of language that will be disabled
-        disable = {
-            -- "c",
-            -- "rust",
-        },
-
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = false,
-    },
-}
-
-require "lsp_signature".setup({
-
-})
+require "lsp_signature".setup({})
 
 require("indent_blankline").setup {
     -- for example, context is off by default, use this to turn it on
     show_current_context = true,
     show_current_context_start = false,
 }
+
 require('gitsigns').setup {
     signs = {
         add          = { hl = 'GitSignsAdd', text = '+', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
@@ -227,7 +198,9 @@ require('gitsigns').setup {
         changedelete = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
     },
 }
+
 require('evalline')
+require('treesitter')
 
 require("trouble").setup {
     icons = false,
@@ -243,6 +216,5 @@ require("trouble").setup {
     },
     use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
 }
-
 
 require('nvim-ts-autotag').setup()
