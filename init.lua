@@ -105,11 +105,14 @@ require('packer').startup({ function(use)
     -- show function signature when you type
     use 'ray-x/lsp_signature.nvim'
 
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
+
     -- still has open issue https://github.com/folke/trouble.nvim/pull/175
     -- use "folke/trouble.nvim"
     use 'felixvo/trouble.nvim'
 
     use 'simrat39/rust-tools.nvim'
+
     -- Lua
     -- use {
     --     "folke/which-key.nvim",
@@ -254,10 +257,39 @@ require('Comment').setup()
 require('neoscroll').setup({})
 
 -- https://github.com/Pocco81/AutoSave.nvim#-configuration
-require("autosave").setup({ 
+require("autosave").setup({
     events = {
         "InsertLeave",
         --     "TextChanged",
     },
 })
 require("lsp-format").setup {}
+
+
+require 'nvim-treesitter.configs'.setup {
+    textobjects = {
+        swap = {
+            enable = true,
+            swap_next = {
+                ["<leader>swn"] = "@parameter.inner",
+            },
+            swap_previous = {
+                ["<leader>swp"] = "@parameter.inner",
+            },
+        },
+    },
+    select = {
+        enable = true,
+
+        -- Automatically jump forward to textobj, similar to targets.vim
+        lookahead = true,
+
+        keymaps = {
+            -- You can use the capture groups defined in textobjects.scm
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = "@class.inner",
+        },
+    },
+}
