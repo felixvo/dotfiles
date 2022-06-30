@@ -70,6 +70,8 @@ require('packer').startup({ function(use)
     use 'windwp/nvim-ts-autotag'
     use 'folke/todo-comments.nvim'
     use 'karb94/neoscroll.nvim'
+    use 'p00f/nvim-ts-rainbow'
+    use 'Pocco81/AutoSave.nvim'
 
     -- tabline
     use 'romgrk/barbar.nvim'
@@ -95,6 +97,7 @@ require('packer').startup({ function(use)
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
     use 'hrsh7th/cmp-path'
+    use "lukas-reineke/lsp-format.nvim"
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate go'
@@ -245,6 +248,16 @@ require("todo-comments").setup {
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
 }
+
+
 require('Comment').setup()
-require('neoscroll').setup({
+require('neoscroll').setup({})
+
+-- https://github.com/Pocco81/AutoSave.nvim#-configuration
+require("autosave").setup({ 
+    events = {
+        "InsertLeave",
+        --     "TextChanged",
+    },
 })
+require("lsp-format").setup {}

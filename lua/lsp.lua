@@ -16,10 +16,11 @@ end
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+    require "lsp-format".on_attach(client)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    vim.api.nvim_command("au BufWritePost * lua vim.lsp.buf.formatting_sync(nil,1000)")
-    vim.api.nvim_command("au BufWritePre *.go lua OrgImports(1000)")
+    -- vim.api.nvim_command("au BufWritePost * lua vim.lsp.buf.formatting_sync(nil,1000)")
+    -- vim.api.nvim_command("au BufWritePre *.go lua OrgImports(1000)")
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
