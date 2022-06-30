@@ -122,6 +122,18 @@ lspconfig['gopls'].setup {
     flags = lsp_flags,
     capabilities = capabilities,
 }
+lspconfig['html'].setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
+
+lspconfig['emmet_ls'].setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
+
 require('rust-tools').setup({})
 
 
@@ -172,5 +184,6 @@ cmp.setup {
     sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
+        { name = 'path' }
     },
 }

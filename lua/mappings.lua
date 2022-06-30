@@ -59,7 +59,7 @@ nmap('<leader>tg', ':NvimTreeToggle<cr>')
 nmap('<leader>tf', ':NvimTreeFocus<cr>')
 
 
-nmap('<leader>j', '<Plug>(easymotion-overwin-f2)')
+nmap('<leader>j', ':HopChar2<cr>')
 nmap('<leader>wv', ':vs<cr>')
 nmap('<leader>wg', ':sp<cr>')
 
@@ -96,4 +96,5 @@ vmap('<Leader>a:', ':Tabularize /:\zs<CR>')
 
 
 -- floatterm
-nmap('<F12>', ':FloatermToggle<cr>')
+nmap('<F12>', ':ToggleTermToggleAll<cr>')
+tmap('<esc>', '<C-\\><C-n>')

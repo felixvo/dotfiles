@@ -41,16 +41,35 @@ require('packer').startup({ function(use)
     use 'junegunn/gv.vim'
 
     -- common plugins
-    use 'tpope/vim-commentary'
+    use { "ellisonleao/glow.nvim", branch = 'main' }
+    use 'numToStr/Comment.nvim'
     use 'tpope/vim-surround'
-    use 'easymotion/vim-easymotion'
+    use { -- easy motion
+        'phaazon/hop.nvim',
+        branch = 'v1', -- optional but strongly recommended
+        config = function()
+            -- you can configure Hop the way you like here; see :h hop-config
+        end
+    }
     use 'windwp/nvim-autopairs'
     use 'mg979/vim-visual-multi'
     use 'godlygeek/tabular'
-    use 'voldikss/vim-floaterm'
+    use {
+        "akinsho/toggleterm.nvim",
+        tag = 'v1.*',
+        config = function()
+            require("toggleterm").setup({
+                -- direction = 'vertical' | 'horizontal' | 'tab' | 'float',
+                direction = 'float',
+            })
+        end
+    }
+
     use 'ahmedkhalf/project.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'windwp/nvim-ts-autotag'
+    use 'folke/todo-comments.nvim'
+    use 'karb94/neoscroll.nvim'
 
     -- tabline
     use 'romgrk/barbar.nvim'
@@ -75,6 +94,7 @@ require('packer').startup({ function(use)
     use 'hrsh7th/cmp-nvim-lsp'
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
+    use 'hrsh7th/cmp-path'
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate go'
@@ -218,3 +238,13 @@ require("trouble").setup {
 }
 
 require('nvim-ts-autotag').setup()
+require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+
+require("todo-comments").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+}
+require('Comment').setup()
+require('neoscroll').setup({
+})
