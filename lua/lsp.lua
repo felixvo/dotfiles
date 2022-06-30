@@ -30,8 +30,8 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gd', ':TroubleToggle lsp_definitions<cr>', bufopts)
     vim.keymap.set('n', 'gi', ':TroubleToggle lsp_implementations<cr>', bufopts)
     vim.keymap.set('n', 'gr', ':TroubleToggle lsp_references<cr>', bufopts)
-    vim.keymap.set('n', '<space>cf', ':TroubleToggle quickfix<cr>', bufopts)
-    vim.keymap.set('n', '<space>q', ':Trouble loclist<cr>', bufopts)
+    vim.keymap.set('n', '<space>fl', ':TroubleToggle quickfix<cr>', bufopts)
+    vim.keymap.set('n', '<space>ll', ':Trouble loclist<cr>', bufopts)
 
 
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)

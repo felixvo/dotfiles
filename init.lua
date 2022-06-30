@@ -111,6 +111,8 @@ require('packer').startup({ function(use)
     -- use "folke/trouble.nvim"
     use 'felixvo/trouble.nvim'
 
+    use 'nvim-telescope/telescope-ui-select.nvim'
+
     use 'simrat39/rust-tools.nvim'
 
     -- Lua
@@ -161,7 +163,8 @@ require('settings')
 require('mappings')
 
 
-require('telescope').setup {
+local telescope = require('telescope')
+telescope.setup {
     defaults = {
         -- Default configuration for telescope goes here:
         -- config_key = value,
@@ -179,9 +182,35 @@ require('telescope').setup {
     pickers = {
         colorscheme = {
             enable_preview = true
+        },
+        find_files = {
+            theme = "dropdown",
+        }
+    },
+    extensions = {
+        ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+                -- even more opts
+            }
+
+            -- pseudo code / specification for writing custom displays, like the one
+            -- for "codeactions"
+            -- specific_opts = {
+            --   [kind] = {
+            --     make_indexed = function(items) -> indexed_items, width,
+            --     make_displayer = function(widths) -> displayer
+            --     make_display = function(displayer) -> function(e)
+            --     make_ordinal = function(e) -> string
+            --   },
+            --   -- for example to disable the custom builtin "codeactions" display
+            --      do the following
+            --   codeactions = false,
+            -- }
         }
     }
 }
+telescope.load_extension('projects')
+telescope.load_extension("ui-select")
 
 require("project_nvim").setup {
     -- your configuration comes here
@@ -205,7 +234,7 @@ require("project_nvim").setup {
     patterns = { ".git", "package.json" },
 }
 
-require('telescope').load_extension('projects')
+telescope.load_extension('projects')
 
 require "lsp_signature".setup({})
 

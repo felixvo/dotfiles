@@ -31,13 +31,18 @@ nmap('<leader><leader>h', ":Telescope help_tags<cr>")
 
 -- Find files using Telescope command-line sugar.
 nmap('<leader>ff', ":lua require('telescope.builtin').find_files()<cr>")
+nmap('<leader>rf', ":lua require('telescope.builtin').recent_files()<cr>")
 nmap('<leader>fg', ":lua require('telescope.builtin').live_grep()<cr>")
+vmap('<leader>fg', ":lua require('telescope.builtin').grep_string()<cr>")
 nmap('<leader>bb', ":lua require('telescope.builtin').buffers()<cr>")
 nmap('<leader>fh', ":lua require('telescope.builtin').help_tags()<cr>")
+nmap('<leader>ttg', ":lua require('telescope.builtin').tags()<cr>")
+nmap('<leader>ttG', ":lua require('telescope.builtin').current_buffer_tags()<cr>")
 
 -- projects mapping
 nmap('<leader>pp', ":Telescope projects<cr>")
 
+nmap('<leader>cmd', ":lua require('telescope.builtin').commands()<cr>")
 
 
 -- buffers
