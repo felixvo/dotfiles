@@ -26,6 +26,7 @@ require('packer').startup({ function(use)
     use 'folke/tokyonight.nvim'
     use 'savq/melange'
     use 'jacoborus/tender.vim'
+    use 'EdenEast/nightfox.nvim'
 
     --  Speed up loading Lua modules in Neovim to improve startup time.
     use 'lewis6991/impatient.nvim'
@@ -60,7 +61,7 @@ require('packer').startup({ function(use)
         config = function()
             require("toggleterm").setup({
                 -- direction = 'vertical' | 'horizontal' | 'tab' | 'float',
-                direction = 'float',
+                direction = 'vertical',
             })
         end
     }

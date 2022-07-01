@@ -63,6 +63,10 @@ nmap('<leader>tt', ':NvimTreeFindFile<cr>')
 nmap('<leader>tg', ':NvimTreeToggle<cr>')
 nmap('<leader>tf', ':NvimTreeFocus<cr>')
 
+-- nmap('<leader>tt', ':NvimTreeFindFile<cr>')
+nmap('1', ':NvimTreeFindFileToggle<cr>')
+-- nmap('<leader>tf', ':NvimTreeFocus<cr>')
+
 
 nmap('<leader>j', ':HopChar2<cr>')
 nmap('<leader>wv', ':vs<cr>')
@@ -101,5 +105,8 @@ vmap('<Leader>a:', ':Tabularize /:\zs<CR>')
 
 
 -- floatterm
-nmap('<F12>', ':ToggleTermToggleAll<cr>')
+nmap('2', ':2ToggleTerm direction="vertical"<cr>')
+nmap('3', ':3ToggleTerm direction="vertical"<cr>')
+nmap('4', ':4ToggleTerm direction="vertical"<cr>')
 tmap('<esc>', '<C-\\><C-n>')
+tmap('<S-esc>', '<C-\\><C-n>:ToggleTermToggleAll<cr>')
