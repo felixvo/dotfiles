@@ -73,6 +73,16 @@ require('packer').startup({ function(use)
     use 'karb94/neoscroll.nvim'
     use 'p00f/nvim-ts-rainbow'
     use 'Pocco81/AutoSave.nvim'
+    use {
+        "folke/zen-mode.nvim",
+        config = function()
+            require("zen-mode").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
 
     -- tabline
     use 'romgrk/barbar.nvim'
@@ -185,6 +195,9 @@ telescope.setup {
             enable_preview = true
         },
         find_files = {
+            theme = "dropdown",
+        },
+        buffers = {
             theme = "dropdown",
         }
     },
