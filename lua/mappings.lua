@@ -105,8 +105,8 @@ vmap('<Leader>a:', ':Tabularize /:\zs<CR>')
 
 
 -- floatterm
-nmap('2', ':2ToggleTerm direction="vertical"<cr>')
-nmap('3', ':3ToggleTerm direction="vertical"<cr>')
-nmap('4', ':4ToggleTerm direction="vertical"<cr>')
+nmap('2', ':2ToggleTerm<cr>')
+nmap('3', ':3ToggleTerm<cr>')
+nmap('4', ':4ToggleTerm<cr>')
 tmap('<esc>', '<C-\\><C-n>')
 tmap('<S-esc>', '<C-\\><C-n>:ToggleTermToggleAll<cr>')

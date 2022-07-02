@@ -61,7 +61,7 @@ require('packer').startup({ function(use)
         config = function()
             require("toggleterm").setup({
                 -- direction = 'vertical' | 'horizontal' | 'tab' | 'float',
-                direction = 'vertical',
+                direction = 'horizontal',
             })
         end
     }
