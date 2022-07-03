@@ -110,3 +110,8 @@ nmap('3', ':3ToggleTerm<cr>')
 nmap('4', ':4ToggleTerm<cr>')
 tmap('<esc>', '<C-\\><C-n>')
 tmap('<S-esc>', '<C-\\><C-n>:ToggleTermToggleAll<cr>')
+
+
+
+nmap('<C-u>', '<C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y>')
+nmap('<C-d>', '<C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e>')

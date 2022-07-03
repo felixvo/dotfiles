@@ -70,7 +70,6 @@ require('packer').startup({ function(use)
     use 'lukas-reineke/indent-blankline.nvim'
     use 'windwp/nvim-ts-autotag'
     use 'folke/todo-comments.nvim'
-    use 'karb94/neoscroll.nvim'
     use 'p00f/nvim-ts-rainbow'
     use 'Pocco81/AutoSave.nvim'
     use {
@@ -297,7 +296,6 @@ require("todo-comments").setup {
 
 
 require('Comment').setup()
-require('neoscroll').setup({})
 
 -- https://github.com/Pocco81/AutoSave.nvim#-configuration
 require("autosave").setup({
