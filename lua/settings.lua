@@ -2,7 +2,6 @@ vim.g.mapleader      = " "
 vim.o.number         = true
 vim.o.relativenumber = false
 vim.o.wrap           = false
-vim.o.expandtab      = true
 vim.o.incsearch      = true
 vim.o.tabstop        = 4
 vim.o.cursorline     = true
@@ -38,7 +37,6 @@ vim.o.smartcase = true
 vim.o.pumheight = 10 --Makes popup menu smaller
 vim.o.fileencoding = 'utf-8' --The encoding written to file
 vim.o.conceallevel = 0 -- So that I can see `` in markdown files
-
 
 vim.o.smarttab    = true -- Makes tabbing smarter will realize you have 2 vs 4
 vim.o.expandtab   = true -- Converts tabs to spaces
