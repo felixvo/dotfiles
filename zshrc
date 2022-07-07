@@ -6,6 +6,11 @@ source $ZPLUG_HOME/init.zsh
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=false
 export TERM=xterm-256color
+if [ $ITERM_SESSION_ID ]; then
+    precmd() {
+      echo -ne "\033]0;${PWD##*/}\007"
+    }
+fi
 
 
 # zsh users
@@ -58,15 +63,6 @@ npm() {
 #bindkey -M vicmd 'k' history-substring-search-up
 #bindkey -M vicmd 'j' history-substring-search-down
 
-# # Load plugins
-# fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
-# source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source ~/.zsh/plugins/k/k.plugin.zsh
-
-
-# Set up the prompt
-# Set Spaceship ZSH as a prompt
 
 autoload -Uz compinit 
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
@@ -77,14 +73,6 @@ fi;
 
 # case insensitive path-completion
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
-
-# autoload -U compinit
-#
-# for dump in ~/.zcompdump(N.mh+24); do
-#   compinit
-# done
-# compinit -C
-
 
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
@@ -128,17 +116,21 @@ for file in ~/dotfiles/zsh_config/*; do
 done
 
 
-
+## load file in zsh_config
+LOCAL_ZSH_CONFIG_DIR="$HOME/.zsh_config"
+if [ -d "$LOCAL_ZSH_CONFIG_DIR" ]; then
+    for file in $LOCAL_ZSH_CONFIG_DIR/*; do
+        source "$file"
+    done
+fi
 
 function csv {
     cat "$@" | column -s, -t | less -#2 -N -S
 }
 
-# source $(brew --prefix autoenv)/activate.sh
+source $(brew --prefix autoenv)/activate.sh
 
-#
 alias ctags="`brew --prefix`/bin/ctags"
-
 
 function aws_profile {
   _profile=$(aws configure list | egrep profile | awk '{print "("$2")"}')
@@ -149,12 +141,6 @@ function aws_profile {
   fi
 }
 
-# zprof # bottom of .zshrc
-fpath=($fpath "/Users/felix.vo/.zfunctions")
-fpath=($fpath "/Users/felix.vo/.zfunctions")
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# zprof # bottom of .zshrc

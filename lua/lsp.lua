@@ -135,6 +135,18 @@ lspconfig['emmet_ls'].setup {
     capabilities = capabilities,
 }
 
+lspconfig['solargraph'].setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
+
+lspconfig['jsonls'].setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
+
 require('rust-tools').setup({})
 
 

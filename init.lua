@@ -65,14 +65,14 @@ require('packer').startup({ function(use)
             })
         end
     }
-    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+        setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
     use 'ahmedkhalf/project.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'windwp/nvim-ts-autotag'
     use 'folke/todo-comments.nvim'
     use 'p00f/nvim-ts-rainbow'
-    use 'Pocco81/AutoSave.nvim'
     use {
         "folke/zen-mode.nvim",
         config = function()
@@ -298,13 +298,6 @@ require("todo-comments").setup {
 
 require('Comment').setup()
 
--- https://github.com/Pocco81/AutoSave.nvim#-configuration
-require("autosave").setup({
-    events = {
-        "InsertLeave",
-        --     "TextChanged",
-    },
-})
 require("lsp-format").setup {}
 
 
