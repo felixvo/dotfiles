@@ -127,9 +127,17 @@ lspconfig['html'].setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
+    filetypes = { "html", "handlebars" }
 }
 
 lspconfig['emmet_ls'].setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+    filetypes = { "html", "handlebars" }
+}
+
+lspconfig['ember'].setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
@@ -142,6 +150,11 @@ lspconfig['solargraph'].setup {
 }
 
 lspconfig['jsonls'].setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
+lspconfig['yamlls'].setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
