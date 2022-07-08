@@ -93,7 +93,7 @@ require('packer').startup({ function(use)
     use 'kyazdani42/nvim-tree.lua'
 
     -- startup page
-    use 'mhinz/vim-startify'
+    use 'goolord/alpha-nvim'
 
     -- plenary is a common dependency for other Lua plugins
     use 'nvim-lua/plenary.nvim'
@@ -330,3 +330,4 @@ require 'nvim-treesitter.configs'.setup {
         },
     },
 }
+require('startup_page')
