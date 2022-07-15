@@ -1,4 +1,4 @@
-# zmodload zsh/zprof # top of your .zshrc file
+#zmodload zsh/zprof # top of your .zshrc file
 
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
@@ -18,7 +18,7 @@ zplug "zsh-users/zsh-completions",              defer:0
 zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-syntax-highlighting"
-#zplug "lukechilds/zsh-nvm"
+zplug "lukechilds/zsh-nvm"
 zplug "mroth/evalcache"
 zplug "spaceship-prompt/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 #zplug "jeffreytse/zsh-vi-mode"
@@ -43,14 +43,14 @@ nvm() {
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
     nvm "$@"
 }
- 
+
 node() {
     unset -f node
     export NVM_DIR=~/.nvm
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
     node "$@"
 }
- 
+
 npm() {
     unset -f npm
     export NVM_DIR=~/.nvm
@@ -64,7 +64,7 @@ npm() {
 #bindkey -M vicmd 'j' history-substring-search-down
 
 
-autoload -Uz compinit 
+autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
 	compinit;
 else
@@ -143,4 +143,4 @@ function aws_profile {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# zprof # bottom of .zshrc
+#zprof # bottom of .zshrc

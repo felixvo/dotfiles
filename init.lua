@@ -15,6 +15,7 @@ require('packer').startup({ function(use)
 
     -- Packer
     use 'wbthomason/packer.nvim'
+    use 'kyazdani42/nvim-web-devicons'
 
     -- :StartupTime for staruptime detail
     use 'dstein64/vim-startuptime'
@@ -169,7 +170,7 @@ require 'bufferline'.setup {
     -- Enable/disable icons
     -- if set to 'numbers', will show buffer index in the tabline
     -- if set to 'both', will show buffer index and icons in the tabline
-    icons = false,
+    icons = true,
     -- Enable/disable close button
     closable = false,
 }
@@ -287,18 +288,18 @@ require('evalline')
 require('treesitter')
 
 require("trouble").setup {
-    icons = false,
+    icons = true,
     fold_open = "v", -- icon used for open folds
     fold_closed = ">", -- icon used for closed folds
     indent_lines = false, -- add an indent guide below the fold icons
     signs = {
         -- icons / text used for a diagnostic
-        error = "error",
-        warning = "warn",
-        hint = "hint",
-        information = "info"
+        -- error = "error",
+        -- warning = "warn",
+        -- hint = "hint",
+        -- information = "info"
     },
-    use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
+    use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
 }
 
 require('nvim-ts-autotag').setup()

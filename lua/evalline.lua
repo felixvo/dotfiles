@@ -77,7 +77,7 @@ end
 
 ins_left {
     function()
-        return '|'
+        return '▊'
     end,
     color = { fg = colors.blue }, -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
@@ -86,7 +86,7 @@ ins_left {
 ins_left {
     -- mode component
     function()
-        return '🖹'
+        return '▊'
     end,
     color = function()
         -- auto change color according to neovims mode
@@ -169,7 +169,7 @@ ins_left {
         end
         return msg
     end,
-    icon = '❅ ',
+    -- icon = '❅ ',
     color = { fg = '#ffffff', gui = 'bold' },
 }
 
@@ -184,13 +184,13 @@ ins_right {
 ins_right {
     'fileformat',
     fmt = string.upper,
-    icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+    icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
     color = { fg = colors.green, gui = 'bold' },
 }
 
 ins_right {
     'branch',
-    icon = 'ᛂ',
+    -- icon = 'ᛂ',
     color = { fg = colors.violet, gui = 'bold' },
 }
 

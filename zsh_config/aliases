@@ -1,5 +1,6 @@
 alias v='nvim'
 alias vi='nvim'
+alias vim='nvim'
 alias ls='exa'
 alias ll='ls -lah'
 alias l='ls -lah'
@@ -49,5 +50,4 @@ alias kb='kubectl'
 alias kballpods='kubectl get pod --all-namespaces'
 alias kballpodsw='kubectl get pod --all-namespaces -o wide'
 alias kbpf='kubectl port-forward'
-
-
+alias kx='kubectx'
