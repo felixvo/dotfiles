@@ -21,7 +21,9 @@ require('packer').startup({ function(use)
     use 'dstein64/vim-startuptime'
 
     -- colorscheme
-    use 'lifepillar/vim-gruvbox8'
+    -- use 'lifepillar/vim-gruvbox8'
+    use 'chriskempson/base16-vim'
+    use 'morhetz/gruvbox'
     use 'joshdick/onedark.vim'
     use 'bluz71/vim-nightfly-guicolors'
     use 'folke/tokyonight.nvim'
@@ -88,7 +90,8 @@ require('packer').startup({ function(use)
     }
 
     -- tabline
-    use 'romgrk/barbar.nvim'
+    -- use 'romgrk/barbar.nvim'
+    use 'akinsho/bufferline.nvim'
 
     -- similar to NERDTree/netrw
     use 'kyazdani42/nvim-tree.lua'
@@ -167,12 +170,12 @@ end,
 require('impatient')
 
 require 'bufferline'.setup {
-    -- Enable/disable icons
-    -- if set to 'numbers', will show buffer index in the tabline
-    -- if set to 'both', will show buffer index and icons in the tabline
-    icons = true,
-    -- Enable/disable close button
-    closable = false,
+    options = {
+        color_icons = true,
+        show_tab_indicators = true,
+        diagnostics = "nvim_lsp",
+        separator_style = "thick"
+    }
 }
 require("nvim-autopairs").setup {}
 require("lsp")

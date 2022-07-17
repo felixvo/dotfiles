@@ -48,11 +48,15 @@ nmap('<leader>cmd', ":lua require('telescope.builtin').commands()<cr>")
 
 
 -- buffers
-nmap('<leader>bd', ':BufferClose<cr>')
-nmap('<C-h>', ':BufferPrevious<cr>')
-nmap('<C-l>', ':BufferNext<cr>')
+nmap('<leader>bd', ':bd<cr>')
+nmap('<leader>bD', ':BufferLineCloseRight<cr>:BufferLineCloseLeft<cr>')
+nmap('<leader>bP', ':BufferLineMovePrev<cr>')
+nmap('<leader>bN', ':BufferLineMoveNext<cr>')
+nmap('<C-h>', ':BufferLineCyclePrev<cr>')
+nmap('<C-l>', ':BufferLineCycleNext<cr>')
+nmap('<leader>bp', ':BufferLinePick<cr>')
 
-nmap('<leader>Q', ':q!<cr>')
+nmap('<leader>Q', ':qall!<cr>')
 
 
 -- This mapping makes macros even easier to remember
@@ -89,9 +93,15 @@ nmap('<leader>gc', ':G commit<CR>')
 nmap('<leader>gp', ':G push<CR>')
 
 
--- close buffer
+-- close windows
 nmap('<leader>wd', '<C-w>q<CR>')
 nmap('<leader>wD', '<C-w>o<CR>')
+
+--
+nmap('<leader>tc', ':tabnew<cr>')
+nmap('<leader>tC', ':tabclose<cr>')
+nmap('<leader>tn', ':tabn<cr>')
+nmap('<leader>tp', ':tabp<cr>')
 
 
 --  moving line up/down

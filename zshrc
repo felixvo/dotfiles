@@ -105,9 +105,9 @@ export EDITOR=nvim
 # zle -N zle-line-init
 # zle -N zle-keymap-select
 
-#autoload -U edit-command-line
-#zle -N edit-command-line
-#bindkey '\033' edit-command-line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^e' edit-command-line
 
 
 ## load file in zsh_config
