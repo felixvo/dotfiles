@@ -10,7 +10,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
 end
 
-
 require('packer').startup({ function(use)
 
     -- Packer
