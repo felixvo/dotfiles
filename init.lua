@@ -21,14 +21,15 @@ require('packer').startup({ function(use)
 
     -- colorscheme
     -- use 'lifepillar/vim-gruvbox8'
-    use 'chriskempson/base16-vim'
+    -- use 'chriskempson/base16-vim'
     use 'morhetz/gruvbox'
-    use 'joshdick/onedark.vim'
-    use 'bluz71/vim-nightfly-guicolors'
-    use 'folke/tokyonight.nvim'
-    use 'savq/melange'
-    use 'jacoborus/tender.vim'
-    use 'EdenEast/nightfox.nvim'
+    -- use 'joshdick/onedark.vim'
+    -- use 'bluz71/vim-nightfly-guicolors'
+    -- use 'folke/tokyonight.nvim'
+    -- use 'savq/melange'
+    -- use 'jacoborus/tender.vim'
+    -- use 'EdenEast/nightfox.nvim'
+    use 'marko-cerovac/material.nvim'
 
     --  Speed up loading Lua modules in Neovim to improve startup time.
     use 'lewis6991/impatient.nvim'
@@ -91,6 +92,39 @@ require('packer').startup({ function(use)
     -- tabline
     -- use 'romgrk/barbar.nvim'
     use 'akinsho/bufferline.nvim'
+    use 'APZelos/blamer.nvim'
+
+    use {
+        "NTBBloodbath/rest.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        commit = 'e5f68db73276c4d4d255f75a77bbe6eff7a476ef',
+        config = function()
+            require("rest-nvim").setup({
+                -- Open request results in a horizontal split
+                result_split_horizontal = false,
+                -- Keep the http file buffer above|left when split horizontal|vertical
+                result_split_in_place = false,
+                -- Skip SSL verification, useful for unknown certificates
+                skip_ssl_verification = false,
+                -- Highlight request on run
+                highlight = {
+                    enabled = true,
+                    timeout = 150,
+                },
+                result = {
+                    -- toggle showing URL, HTTP info, headers at top the of result window
+                    show_url = true,
+                    show_http_info = true,
+                    show_headers = true,
+                },
+                -- Jump to request line on run
+                jump_to_request = false,
+                env_file = '.env',
+                custom_dynamic_variables = {},
+                yank_dry_run = true,
+            })
+        end
+    }
 
     -- similar to NERDTree/netrw
     use 'kyazdani42/nvim-tree.lua'
@@ -116,6 +150,7 @@ require('packer').startup({ function(use)
     use 'hrsh7th/cmp-nvim-lsp'
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
+    use 'rafamadriz/friendly-snippets'
     use 'hrsh7th/cmp-path'
     use "lukas-reineke/lsp-format.nvim"
     use {
@@ -146,6 +181,13 @@ require('packer').startup({ function(use)
     --         }
     --     end
     -- }
+    --
+
+    -- Ruby
+    use 'vim-test/vim-test'
+    use 'tpope/vim-rails'
+    use 'vim-ruby/vim-ruby'
+
 
 
     -- Automatically set up your configuration after cloning packer.nvim
@@ -347,3 +389,4 @@ require 'nvim-treesitter.configs'.setup {
     },
 }
 require('startup_page')
+vim.g.blamer_enabled = true

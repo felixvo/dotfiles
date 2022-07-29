@@ -65,9 +65,8 @@ nmap('Q', '@q')
 vmap('Q', ':norm @q<cr>')
 
 -- NvimTree
-nmap('<leader>tt', ':NvimTreeFindFile<cr>')
+nmap('<leader>tf', ':NvimTreeFindFile<cr>')
 nmap('<leader>tg', ':NvimTreeToggle<cr>')
-nmap('<leader>tf', ':NvimTreeFocus<cr>')
 
 -- nmap('<leader>tt', ':NvimTreeFindFile<cr>')
 nmap('1', ':NvimTreeFindFileToggle<cr>')
@@ -127,3 +126,9 @@ tmap('<S-esc>', '<C-\\><C-n>:ToggleTermToggleAll<cr>')
 
 nmap('<C-u>', '<C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y>')
 nmap('<C-d>', '<C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e>')
+
+nmap('<leader>hr', '<Plug>RestNvim<CR>')
+
+
+nmap('<leader>rt', ':TestNearest<CR>')
+nmap('<leader>rT', ':TestFile<CR>')

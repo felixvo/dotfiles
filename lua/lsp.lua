@@ -170,6 +170,8 @@ require('rust-tools').setup({})
 
 -- luasnip setup
 local luasnip = require 'luasnip'
+luasnip.filetype_extend("ruby", { "rails" })
+require("luasnip.loaders.from_vscode").lazy_load()
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
@@ -215,6 +217,7 @@ cmp.setup {
     sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'path' }
+        { name = 'path' },
+        { name = 'buffer', keyword_length = 2 },
     },
 }
