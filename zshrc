@@ -1,5 +1,4 @@
 #zmodload zsh/zprof # top of your .zshrc file
-
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
@@ -14,12 +13,12 @@ fi
 
 
 # zsh users
+zplug "mroth/evalcache"
 zplug "zsh-users/zsh-completions",              defer:0
 zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-syntax-highlighting"
 zplug "lukechilds/zsh-nvm"
-zplug "mroth/evalcache"
 zplug "spaceship-prompt/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 #zplug "jeffreytse/zsh-vi-mode"
 #
@@ -37,26 +36,26 @@ if [ -f $ZPLUG_HOME/init.zsh ]; then
     source $ZPLUG_HOME/init.zsh
 fi
 
-nvm() {
-    unset -f nvm
-    export NVM_DIR=~/.nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    nvm "$@"
-}
+# nvm() {
+#     unset -f nvm
+#     export NVM_DIR=~/.nvm
+#     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#     nvm "$@"
+# }
 
-node() {
-    unset -f node
-    export NVM_DIR=~/.nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    node "$@"
-}
-
-npm() {
-    unset -f npm
-    export NVM_DIR=~/.nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    npm "$@"
-}
+# node() {
+#     unset -f node
+#     export NVM_DIR=~/.nvm
+#     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#     node "$@"
+# }
+#
+# npm() {
+#     unset -f npm
+#     export NVM_DIR=~/.nvm
+#     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#     npm "$@"
+# }
 
 #bindkey '^k' history-substring-search-up
 #bindkey '^j' history-substring-search-down

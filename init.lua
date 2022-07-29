@@ -24,11 +24,11 @@ require('packer').startup({ function(use)
     -- use 'chriskempson/base16-vim'
     use 'morhetz/gruvbox'
     -- use 'joshdick/onedark.vim'
-    -- use 'bluz71/vim-nightfly-guicolors'
-    -- use 'folke/tokyonight.nvim'
-    -- use 'savq/melange'
-    -- use 'jacoborus/tender.vim'
-    -- use 'EdenEast/nightfox.nvim'
+    use 'bluz71/vim-nightfly-guicolors'
+    use 'folke/tokyonight.nvim'
+    use 'savq/melange'
+    use 'jacoborus/tender.vim'
+    use 'EdenEast/nightfox.nvim'
     use 'marko-cerovac/material.nvim'
 
     --  Speed up loading Lua modules in Neovim to improve startup time.
@@ -139,6 +139,7 @@ require('packer').startup({ function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use { "nvim-telescope/telescope-file-browser.nvim" }
 
     use 'junegunn/fzf'
     use 'junegunn/fzf.vim'
@@ -279,12 +280,28 @@ telescope.setup {
             override_file_sorter = true, -- override the file sorter
             case_mode = "smart_case", -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
-        }
+        },
+        file_browser = {
+            theme = "ivy",
+            -- disables netrw and use telescope-file-browser in its place
+            hijack_netrw = true,
+            mappings = {
+                ["i"] = {
+                    -- your custom insert mode mappings
+                },
+                ["n"] = {
+                    -- your custom normal mode mappings
+                },
+            },
+        },
     }
 }
 telescope.load_extension('projects')
 telescope.load_extension('ui-select')
 telescope.load_extension('fzf')
+-- To get telescope-file-browser loaded and working with telescope,
+-- you need to call load_extension, somewhere after setup function:
+telescope.load_extension('file_browser')
 
 require("project_nvim").setup {
     -- your configuration comes here

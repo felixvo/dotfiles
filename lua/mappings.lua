@@ -35,6 +35,7 @@ nmap('<leader>ff', ":GFiles<cr>")
 nmap('<leader>rf', ":lua require('telescope.builtin').recent_files()<cr>")
 -- nmap('<leader>fg', ":lua require('telescope.builtin').live_grep()<cr>")
 nmap('<leader>fg', ":Rg<cr>")
+nmap('<leader>fb', ":Telescope file_browser<cr>")
 vmap('<leader>fg', ":Rg <C-R><C-W><cr>")
 nmap('<leader>bb', ":lua require('telescope.builtin').buffers()<cr>")
 nmap('<leader>fh', ":lua require('telescope.builtin').help_tags()<cr>")
@@ -69,7 +70,7 @@ nmap('<leader>tf', ':NvimTreeFindFile<cr>')
 nmap('<leader>tg', ':NvimTreeToggle<cr>')
 
 -- nmap('<leader>tt', ':NvimTreeFindFile<cr>')
-nmap('1', ':NvimTreeFindFileToggle<cr>')
+-- nmap('1', ':NvimTreeFindFileToggle<cr>')
 -- nmap('<leader>tf', ':NvimTreeFocus<cr>')
 
 
@@ -116,11 +117,11 @@ vmap('<Leader>a:', ':Tabularize /:\zs<CR>')
 
 
 -- floatterm
-nmap('2', ':2ToggleTerm<cr>')
-nmap('3', ':3ToggleTerm<cr>')
-nmap('4', ':4ToggleTerm<cr>')
-tmap('<esc>', '<C-\\><C-n>')
-tmap('<S-esc>', '<C-\\><C-n>:ToggleTermToggleAll<cr>')
+-- nmap('2', ':2ToggleTerm<cr>')
+-- nmap('3', ':3ToggleTerm<cr>')
+-- nmap('4', ':4ToggleTerm<cr>')
+-- tmap('<esc>', '<C-\\><C-n>')
+-- tmap('<S-esc>', '<C-\\><C-n>:ToggleTermToggleAll<cr>')
 
 
 
