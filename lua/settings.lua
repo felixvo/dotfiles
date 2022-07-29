@@ -56,13 +56,16 @@ vim.g.floaterm_width  = 0.8
 vim.g.floaterm_height = 0.8
 vim.g.guifont         = "Cascadia Mono:h15"
 
+-- vim.g.material_style = "darker"
+vim.g.material_style = "deep ocean"
+
 vim.cmd([[ 
 highlight clear SignColumn
 highlight clear LineNr
 "" colorscheme base16-oceanicnext
 "" colorscheme base16-material-darker
 "colorscheme gruvbox8_hard 
-colorscheme nightfly 
+colorscheme material 
 
 ""*****************************************************************************
 """ Abbreviations
