@@ -54,3 +54,12 @@ brew install yq
 npm install dotenv
 ```
 
+## FONTS
+
+```
+brew tap homebrew/cask-fonts
+brew install --cask font-fira-code-nerd-font
+brew install --cask font-iosevka-nerd-font
+brew install --cask font-victor-mono-nerd-font
+brew install --cask font-caskaydia-cove-nerd-font
+```
