@@ -1,6 +1,5 @@
 #zmodload zsh/zprof # top of your .zshrc file
-export ZPLUG_HOME=$(brew --prefix)/opt/zplug
-source $ZPLUG_HOME/init.zsh
+source ~/antigen.zsh
 
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=false
@@ -12,29 +11,20 @@ if [ $ITERM_SESSION_ID ]; then
 fi
 
 
-# zsh users
-zplug "mroth/evalcache"
-zplug "zsh-users/zsh-completions",              defer:0
-zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-syntax-highlighting"
-zplug "lukechilds/zsh-nvm"
-zplug "spaceship-prompt/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-#zplug "jeffreytse/zsh-vi-mode"
+# PLUGINS
 #
-## Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
+antigen bundle "mroth/evalcache"
+antigen bundle "zsh-users/zsh-completions"
+antigen bundle "zsh-users/zsh-autosuggestions"
+antigen bundle "zsh-users/zsh-syntax-highlighting"
+antigen bundle "zsh-users/zsh-history-substring-search"
+#antigen bundle "lukechilds/zsh-nvm"
+antigen bundle "spaceship-prompt/spaceship-prompt"
 
-zplug load
+antigen apply
 
-if [ -f $ZPLUG_HOME/init.zsh ]; then
-    source $ZPLUG_HOME/init.zsh
-fi
+# END PLUGINS
+
 
 # nvm() {
 #     unset -f nvm
@@ -92,7 +82,7 @@ setopt histignorealldups sharehistory
 # Use emacs keybindings even if our EDITOR is set to vi
 export EDITOR=nvim
 #set -o vi
-#bindkey -v
+bindkey -e
 
 # fix vi mode indicator error
 # function zle-line-init zle-keymap-select {
