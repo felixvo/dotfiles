@@ -64,9 +64,8 @@ highlight clear SignColumn
 highlight clear LineNr
 "" colorscheme base16-oceanicnext
 "" colorscheme base16-material-darker
-"colorscheme gruvbox8_hard 
+colorscheme gruvbox8_hard 
 " colorscheme material 
-colorscheme nightfly 
 
 ""*****************************************************************************
 """ Abbreviations

@@ -20,9 +20,9 @@ require('packer').startup({ function(use)
     use 'dstein64/vim-startuptime'
 
     -- colorscheme
-    -- use 'lifepillar/vim-gruvbox8'
+    use 'lifepillar/vim-gruvbox8'
     -- use 'chriskempson/base16-vim'
-    use 'morhetz/gruvbox'
+    -- use 'morhetz/gruvbox'
     -- use 'joshdick/onedark.vim'
     use 'bluz71/vim-nightfly-guicolors'
     use 'folke/tokyonight.nvim'
