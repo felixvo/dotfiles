@@ -1,4 +1,4 @@
-let mapleader =","
+let mapleader =" "
 "source ~/.vimrc
 set surround
 " cs"' => change surround from " to '
@@ -7,11 +7,25 @@ set surround
 " ys$" => surround to end of line
 " in visual mode, start with S and then type the surround char
 set multiple-cursors
+set easymotion
+
+
+" Do incremental searching.
+set incsearch
+
 <C-n>, next
 <C-x>, skip
 <C-p>, previous
-g<C-n> 
+" g<C-n>
 "
-map <leader>s :action Macro.FormatAndSave<CR>
-map <leader>f :action GotoFile<CR>
-map <leader>b :action RecentFiles<CR>
+
+""" Mappings --------------------------------
+map <leader>s <Plug>(easymotion-s)
+map <leader>fs <Action>(SaveAll)<CR>
+map <leader>ff <Action>(GotoFile)<CR>
+map <leader>fr <Action>(RecentFiles)<CR>
+
+
+
+map gr <Action>(FindUsages)<CR>
+"map <leader>e <Plug>(easymotion-f)
