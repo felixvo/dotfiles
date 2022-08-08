@@ -3,9 +3,11 @@
   "Working Directory" : "\/Users\/felix.vo",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
-    "Green Component" : 1,
-    "Blue Component" : 1,
-    "Red Component" : 1
+    "Red Component" : 0.896240234375,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.88334419950842857,
+    "Alpha Component" : 1,
+    "Green Component" : 0.88334419950842857
   },
   "Rows" : 100,
   "Ansi 11 Color" : {
@@ -15,9 +17,11 @@
   },
   "Use Italic Font" : false,
   "Foreground Color" : {
-    "Green Component" : 0.98048108816146851,
-    "Blue Component" : 0.95548701286315918,
-    "Red Component" : 1
+    "Red Component" : 1,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.800506591796875,
+    "Alpha Component" : 1,
+    "Green Component" : 0.91113391493327134
   },
   "Use Custom Window Title" : false,
   "Right Option Key Sends" : 0,
@@ -30,9 +34,11 @@
   "Mouse Reporting" : true,
   "Cursor Boost" : 0,
   "Ansi 4 Color" : {
-    "Green Component" : 0.55481654405593872,
-    "Blue Component" : 0.97294086217880249,
-    "Red Component" : 0
+    "Red Component" : 0.019565333146601915,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.799896240234375,
+    "Alpha Component" : 1,
+    "Green Component" : 0.52433734144123956
   },
   "Non-ASCII Anti Aliased" : true,
   "Sync Title" : false,
@@ -245,14 +251,18 @@
     }
   },
   "Ansi 14 Color" : {
-    "Green Component" : 1,
-    "Blue Component" : 0.94094775504779782,
-    "Red Component" : 0.4042010611351281
+    "Red Component" : 0.39105996489524841,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.80967923400328123,
+    "Alpha Component" : 1,
+    "Green Component" : 0.841796875
   },
   "Ansi 2 Color" : {
-    "Green Component" : 0.88189995288848877,
-    "Blue Component" : 0.04123397171497345,
-    "Red Component" : 0.54928803443908691
+    "Red Component" : 0.48468838500400407,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.027762070298194885,
+    "Alpha Component" : 1,
+    "Green Component" : 0.701934814453125
   },
   "Send Code When Idle" : false,
   "ASCII Anti Aliased" : true,
@@ -267,9 +277,11 @@
   "Use Bold Font" : false,
   "Silence Bell" : false,
   "Ansi 12 Color" : {
-    "Green Component" : 0.5733030673510271,
-    "Blue Component" : 1,
-    "Red Component" : 0.00053359762918048226
+    "Red Component" : 0.084492948371917009,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.823394775390625,
+    "Alpha Component" : 1,
+    "Green Component" : 0.56523291759397243
   },
   "Window Type" : 0,
   "Use Bright Bold" : true,
@@ -289,9 +301,11 @@
     "Green Component" : 0.82844076363583408
   },
   "Ansi 1 Color" : {
-    "Green Component" : 0,
-    "Blue Component" : 0.058871746063232422,
-    "Red Component" : 1
+    "Red Component" : 0.946563720703125,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.061514509376138449,
+    "Alpha Component" : 1,
+    "Green Component" : 0.15077969830472332
   },
   "Name" : "Default",
   "Blinking Cursor" : false,
@@ -323,13 +337,15 @@
     "Red Component" : 0.13574660633484159
   },
   "Blur" : false,
-  "Normal Font" : "CaskaydiaCoveNerdFontComplete-Regular 16",
+  "Normal Font" : "CodeNewRomanNerdFontCompleteM- 18",
   "Vertical Spacing" : 1,
   "Use Underline Color" : false,
   "Ansi 7 Color" : {
-    "Green Component" : 1,
-    "Blue Component" : 1,
-    "Red Component" : 1
+    "Red Component" : 0.834808349609375,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.82641389919444919,
+    "Alpha Component" : 1,
+    "Green Component" : 0.82641389919444919
   },
   "Command" : "\/bin\/zsh",
   "Terminal Type" : "xterm-256color",
@@ -345,22 +361,28 @@
   "Option Key Sends" : 0,
   "Blink Allowed" : false,
   "Ansi 15 Color" : {
-    "Green Component" : 1,
-    "Blue Component" : 1,
-    "Red Component" : 1
+    "Red Component" : 0.84619140625,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.83356361091136932,
+    "Alpha Component" : 1,
+    "Green Component" : 0.83356361091136932
   },
   "Open Toolbelt" : false,
   "Ansi 6 Color" : {
-    "Green Component" : 0.84575581550598145,
-    "Blue Component" : 0.92260181903839111,
-    "Red Component" : 0
+    "Red Component" : 0.020860093645751476,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.768890380859375,
+    "Alpha Component" : 1,
+    "Green Component" : 0.71397856082931066
   },
   "Transparency" : 0,
   "Initial Text" : "",
   "Background Color" : {
-    "Green Component" : 0.060920167714357376,
-    "Blue Component" : 0.097826063632965088,
-    "Red Component" : 0.0540635846555233
+    "Red Component" : 0.10736083984375,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.089409483596682549,
+    "Alpha Component" : 1,
+    "Green Component" : 0.10021382477486532
   },
   "Screen" : -1,
   "Custom Tab Title" : "\\(tab.currentSession.path)",
