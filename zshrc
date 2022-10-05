@@ -96,7 +96,7 @@ bindkey -e
 
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey '^e' edit-command-line
+bindkey '^h' edit-command-line
 
 
 ## load file in zsh_config

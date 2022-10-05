@@ -25,6 +25,9 @@ alias gw='git switch -'
 alias gnoe='git commit --no-edit'
 alias gca='git commit --amend'
 alias gtree='git log --graph --simplify-by-decoration --pretty=format:'%d' --all'
+gb() {
+ git checkout "$(git branch --all | fzf| tr -d '[:space:]')"
+}
 
 alias gsh='git log -1 --pretty=format:%h'
 
