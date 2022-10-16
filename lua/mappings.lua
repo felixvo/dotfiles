@@ -30,8 +30,8 @@ nmap('<space>q', vim.diagnostic.setloclist)
 nmap('<leader><leader>h', ":Telescope help_tags<cr>")
 
 -- Find files using Telescope command-line sugar.
--- nmap('<leader>ff', ":lua require('telescope.builtin').find_files()<cr>")
-nmap('<leader>ff', ":GFiles<cr>")
+nmap('<leader>ff', ":lua require('telescope.builtin').find_files()<cr>")
+-- nmap('<leader>ff', ":GFiles<cr>")
 nmap('<leader>rf', ":lua require('telescope.builtin').recent_files()<cr>")
 -- nmap('<leader>fg', ":lua require('telescope.builtin').live_grep()<cr>")
 nmap('<leader>fg', ":Rg<cr>")
