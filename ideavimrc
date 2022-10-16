@@ -29,3 +29,8 @@ map <leader>fr <Action>(RecentFiles)<CR>
 
 map gr <Action>(FindUsages)<CR>
 "map <leader>e <Plug>(easymotion-f)
+
+
+""" Windows
+map <leader>wv <Action>(SplitVertically)<CR>
+map <leader>wg <Action>(SplitHorizontally)<CR>

@@ -21,11 +21,13 @@ alias g='git'
 alias gc='git checkout'
 alias gst='git status'
 alias gp='git pull'
-alias gck='git checkout'
-alias gnoedit='git commit --no-edit'
-alias gcm='git commit -am'
-alias gcam='git commit -am'
+alias gw='git switch -'
+alias gnoe='git commit --no-edit'
+alias gca='git commit --amend'
 alias gtree='git log --graph --simplify-by-decoration --pretty=format:'%d' --all'
+gb() {
+ git checkout "$(git branch --all | fzf| tr -d '[:space:]')"
+}
 
 alias gsh='git log -1 --pretty=format:%h'
 
