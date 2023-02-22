@@ -58,16 +58,6 @@ require('packer').startup({ function(use)
     use 'windwp/nvim-autopairs'
     use 'mg979/vim-visual-multi'
     use 'godlygeek/tabular'
-    use {
-        "akinsho/toggleterm.nvim",
-        tag = 'v1.*',
-        config = function()
-            require("toggleterm").setup({
-                -- direction = 'vertical' | 'horizontal' | 'tab' | 'float',
-                direction = 'horizontal',
-            })
-        end
-    }
     use({
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
