@@ -206,7 +206,8 @@ require 'bufferline'.setup {
         color_icons = true,
         show_tab_indicators = true,
         diagnostics = "nvim_lsp",
-        separator_style = "thick"
+        separator_style = "thick",
+        buffer_close_icon = ''
     }
 }
 require("nvim-autopairs").setup {}
