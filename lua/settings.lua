@@ -64,7 +64,8 @@ highlight clear SignColumn
 highlight clear LineNr
 "" colorscheme base16-oceanicnext
 "" colorscheme base16-material-darker
-colorscheme nightfox 
+colorscheme kanagawa 
+" colorscheme nightfox 
 " colorscheme material 
 
 let g:fzf_preview_window = ['right:hidden', 'ctrl-/']
