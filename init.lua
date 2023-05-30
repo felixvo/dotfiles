@@ -45,6 +45,7 @@ require('packer').startup({ function(use)
     use 'tpope/vim-fugitive'
     use 'junegunn/gv.vim'
 
+    use 'tpope/vim-projectionist'
     -- common plugins
     use { "ellisonleao/glow.nvim", branch = 'main' }
     use 'numToStr/Comment.nvim'
@@ -248,7 +249,7 @@ telescope.setup {
     },
     pickers = {
         colorscheme = {
-            enable_preview = false
+            enable_preview = true
         },
         find_files = {
             --   theme = "dropdown",
