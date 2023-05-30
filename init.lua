@@ -21,6 +21,7 @@ require('packer').startup({ function(use)
 
     -- colorscheme
     use 'lifepillar/vim-gruvbox8'
+    use 'rebelot/kanagawa.nvim'
     -- use 'chriskempson/base16-vim'
     -- use 'morhetz/gruvbox'
     -- use 'joshdick/onedark.vim'
