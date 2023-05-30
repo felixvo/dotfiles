@@ -64,8 +64,10 @@ highlight clear SignColumn
 highlight clear LineNr
 "" colorscheme base16-oceanicnext
 "" colorscheme base16-material-darker
-colorscheme gruvbox8_hard 
+colorscheme nightfox 
 " colorscheme material 
+
+let g:fzf_preview_window = ['right:hidden', 'ctrl-/']
 
 ""*****************************************************************************
 """ Abbreviations

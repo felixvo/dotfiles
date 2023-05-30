@@ -131,5 +131,7 @@ nmap('<C-d>', '<C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e>')
 nmap('<leader>hr', '<Plug>RestNvim<CR>')
 
 
-nmap('<leader>rt', ':TestNearest<CR>')
-nmap('<leader>rT', ':TestFile<CR>')
+-- Tests
+nmap('<leader>tt', ':lua require("neotest").run.run()<cr>')
+nmap('<leader>tf', ':lua require("neotest").run.run(vim.fn.expand("%"))<cr>')
+nmap('<leader>tp', ':  lua require("neotest").output_panel.toggle()<cr>')

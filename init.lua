@@ -175,10 +175,22 @@ require('packer').startup({ function(use)
     --
 
     -- Ruby
-    use 'vim-test/vim-test'
     use 'tpope/vim-rails'
     use 'vim-ruby/vim-ruby'
 
+
+    -- Test
+    -- use 'vim-test/vim-test'
+    -- use { "rcarriga/vim-ultest", requires = {"vim-test/vim-test"}, run = ":UpdateRemotePlugins" }
+    use {
+      "nvim-neotest/neotest",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "antoinemadec/FixCursorHold.nvim",
+        "olimorris/neotest-rspec"
+      },
+    }
 
 
     -- Automatically set up your configuration after cloning packer.nvim
@@ -235,7 +247,7 @@ telescope.setup {
     },
     pickers = {
         colorscheme = {
-            enable_preview = true
+            enable_preview = false
         },
         find_files = {
             --   theme = "dropdown",
@@ -397,4 +409,37 @@ require 'nvim-treesitter.configs'.setup {
     },
 }
 require('startup_page')
-vim.g.blamer_enabled = true
+vim.g.blamer_enabled = false
+
+
+
+require("neotest").setup {
+  adapters = {
+    require("neotest-rspec")
+  },
+  diagnostic = {
+    enabled = true,
+    severity = 1
+  },
+  floating = {
+    border = "rounded",
+    max_height = 0.6,
+    max_width = 0.6,
+    options = {}
+  },
+  output = {
+    enabled = true,
+    open_on_run = "short"
+  },
+  jump = {
+    enabled = false
+  },
+  quickfix = {
+    enabled = false,
+    open = false
+  },
+  output_panel = {
+    enabled = true,
+    open = "botright split | resize 15"
+  },
+}
