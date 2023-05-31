@@ -1,132 +1,166 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+local fn = vim.fn
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+    print("setting up Packer...")
+    packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+        install_path })
+
+    -- https://github.com/wbthomason/packer.nvim/issues/750
+    -- fix boostrap not work for new setup
+    vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
 end
-vim.opt.rtp:prepend(lazypath)
 
-vim.g.mapleader            = " "
-vim.g.maplocalleader       = " "
+require('packer').startup({ function(use)
 
-require('lazy').setup({
-
-    'kyazdani42/nvim-web-devicons',
+    -- Packer
+    use 'wbthomason/packer.nvim'
+    use 'kyazdani42/nvim-web-devicons'
 
     -- :StartupTime for staruptime detail
-    'dstein64/vim-startuptime',
+    use 'dstein64/vim-startuptime'
 
     -- colorscheme
-    'lifepillar/vim-gruvbox8',
-    'rebelot/kanagawa.nvim',
-    'chriskempson/base16-vim',
-    'morhetz/gruvbox',
-    'joshdick/onedark.vim',
-    'bluz71/vim-nightfly-guicolors',
-    'folke/tokyonight.nvim',
-    'EdenEast/nightfox.nvim',
-    'marko-cerovac/material.nvim',
+    use 'lifepillar/vim-gruvbox8'
+    use 'rebelot/kanagawa.nvim'
+    use 'chriskempson/base16-vim'
+    -- use 'morhetz/gruvbox'
+    use 'joshdick/onedark.vim'
+    use 'bluz71/vim-nightfly-guicolors'
+    use 'folke/tokyonight.nvim'
+    use 'EdenEast/nightfox.nvim'
+    use 'marko-cerovac/material.nvim'
 
     -- statusline written in Lua
     -- settings in lua/evalline.lua
-    'nvim-lualine/lualine.nvim',
+    use 'nvim-lualine/lualine.nvim'
 
     -- git plugins
     -- alternative to 'airblade/vim-gitgutter'
-    'lewis6991/gitsigns.nvim',
-    'tpope/vim-fugitive',
-    'junegunn/gv.vim',
+    use 'lewis6991/gitsigns.nvim'
+    use 'tpope/vim-fugitive'
+    use 'junegunn/gv.vim'
 
-    'tpope/vim-projectionist',
+    use 'tpope/vim-projectionist'
     -- common plugins
-    { 'ellisonleao/glow.nvim', branch = 'main' },
-    'numToStr/Comment.nvim',
-    'tpope/vim-surround',
-    { -- easy motion
+    use { "ellisonleao/glow.nvim", branch = 'main' }
+    use 'numToStr/Comment.nvim'
+    use 'tpope/vim-surround'
+    use { -- easy motion
         'phaazon/hop.nvim',
         branch = 'v1', -- optional but strongly recommended
         config = function()
             -- you can configure Hop the way you like here; see :h hop-config
         end
-    },
-    'windwp/nvim-autopairs',
-    'mg979/vim-visual-multi',
-    'godlygeek/tabular',
-    {
+    }
+    use 'windwp/nvim-autopairs'
+    use 'mg979/vim-visual-multi'
+    use 'godlygeek/tabular'
+    use({
         "iamcco/markdown-preview.nvim",
-        build = function() vim.fn["mkdp#util#install"]() end,
-    },
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
 
-    'ahmedkhalf/project.nvim',
-    'lukas-reineke/indent-blankline.nvim',
-    'windwp/nvim-ts-autotag',
-    'folke/todo-comments.nvim',
-    'p00f/nvim-ts-rainbow',
-    {
+    use 'ahmedkhalf/project.nvim'
+    use 'lukas-reineke/indent-blankline.nvim'
+    use 'windwp/nvim-ts-autotag'
+    use 'folke/todo-comments.nvim'
+    use 'p00f/nvim-ts-rainbow'
+    use {
         "folke/zen-mode.nvim",
         config = function()
-            require("zen-mode").setup({
+            require("zen-mode").setup {
                 -- your configuration comes here
                 -- or leave it empty to use the default settings
                 -- refer to the configuration section below
-            })
-    	end
-    },
+            }
+        end
+    }
 
     -- tabline
     -- use 'romgrk/barbar.nvim'
-    'akinsho/bufferline.nvim',
-    'APZelos/blamer.nvim',
+    use 'akinsho/bufferline.nvim'
+    use 'APZelos/blamer.nvim'
+
+    use {
+        "NTBBloodbath/rest.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        commit = 'e5f68db73276c4d4d255f75a77bbe6eff7a476ef',
+        config = function()
+            require("rest-nvim").setup({
+                -- Open request results in a horizontal split
+                result_split_horizontal = false,
+                -- Keep the http file buffer above|left when split horizontal|vertical
+                result_split_in_place = false,
+                -- Skip SSL verification, useful for unknown certificates
+                skip_ssl_verification = false,
+                -- Highlight request on run
+                highlight = {
+                    enabled = true,
+                    timeout = 150,
+                },
+                result = {
+                    -- toggle showing URL, HTTP info, headers at top the of result window
+                    show_url = true,
+                    show_http_info = true,
+                    show_headers = true,
+                },
+                -- Jump to request line on run
+                jump_to_request = false,
+                env_file = '.env',
+                custom_dynamic_variables = {},
+                yank_dry_run = true,
+            })
+        end
+    }
 
     -- similar to NERDTree/netrw
-    'kyazdani42/nvim-tree.lua',
+    use 'kyazdani42/nvim-tree.lua'
 
     -- startup page
-    'goolord/alpha-nvim',
+    use 'goolord/alpha-nvim'
 
     -- plenary is a common dependency for other Lua plugins
-    'nvim-lua/plenary.nvim',
-    {
+    use 'nvim-lua/plenary.nvim'
+    use {
         'nvim-telescope/telescope.nvim',
-        dependencies = { { 'nvim-lua/plenary.nvim' } }
-    },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    { "nvim-telescope/telescope-file-browser.nvim" },
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use { "nvim-telescope/telescope-file-browser.nvim" }
 
-    'junegunn/fzf',
-    'junegunn/fzf.vim',
+    use 'junegunn/fzf'
+    use 'junegunn/fzf.vim'
 
     -- LSP
-    'neovim/nvim-lspconfig',
-    'williamboman/nvim-lsp-installer',
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-nvim-lsp',
-    'saadparwaiz1/cmp_luasnip',
-    'L3MON4D3/LuaSnip',
-    'rafamadriz/friendly-snippets',
-    'hrsh7th/cmp-path',
-    "lukas-reineke/lsp-format.nvim",
-    {
+    use 'neovim/nvim-lspconfig'
+    use 'williamboman/nvim-lsp-installer'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'L3MON4D3/LuaSnip'
+    use 'rafamadriz/friendly-snippets'
+    use 'hrsh7th/cmp-path'
+    use "lukas-reineke/lsp-format.nvim"
+    use {
         'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate go'
-    },
+        run = ':TSUpdate go'
+    }
     -- show function signature when you type
-    'ray-x/lsp_signature.nvim',
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    'folke/trouble.nvim',
-    'nvim-telescope/telescope-ui-select.nvim',
-    'simrat39/rust-tools.nvim',
+    use 'ray-x/lsp_signature.nvim'
+
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
+
+    use "folke/trouble.nvim"
+
+    use 'nvim-telescope/telescope-ui-select.nvim'
+
+    use 'simrat39/rust-tools.nvim'
 
     -- Lua
     -- use {
     --     "folke/which-key.nvim",
     --     config = function()
-    --         require("which-key"). {
+    --         require("which-key").setup {
     --             -- your configuration comes here
     --             -- or leave it empty to use the default settings
     --             -- refer to the configuration section below
@@ -136,24 +170,41 @@ require('lazy').setup({
     --
 
     -- Ruby
-    'tpope/vim-rails',
-    'vim-ruby/vim-ruby',
+    use 'tpope/vim-rails'
+    use 'vim-ruby/vim-ruby'
 
 
     -- Test
     -- use 'vim-test/vim-test'
-    -- use { "rcarriga/vim-ultest", dependencies = {"vim-test/vim-test"}, build = ":UpdateRemotePlugins" }
-    {
+    -- use { "rcarriga/vim-ultest", requires = {"vim-test/vim-test"}, run = ":UpdateRemotePlugins" }
+    use {
       "nvim-neotest/neotest",
-      dependencies = {
+      requires = {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
         "antoinemadec/FixCursorHold.nvim",
         "olimorris/neotest-rspec"
       },
-    },
-})
+    }
 
+
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if packer_bootstrap then
+        require('packer').sync()
+    end
+end,
+    config = {
+        display = {
+            open_fn = require('packer.util').float,
+        }
+    },
+    profile = { -- https://github.com/wbthomason/packer.nvim#profiling
+        enable = true,
+        threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
+    }
+}
+)
 
 vim.loader.enable()
 
