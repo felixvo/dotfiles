@@ -22,18 +22,15 @@ require('packer').startup({ function(use)
     -- colorscheme
     use 'lifepillar/vim-gruvbox8'
     use 'rebelot/kanagawa.nvim'
-    -- use 'chriskempson/base16-vim'
+    use 'chriskempson/base16-vim'
     -- use 'morhetz/gruvbox'
-    -- use 'joshdick/onedark.vim'
+    use 'joshdick/onedark.vim'
     use 'bluz71/vim-nightfly-guicolors'
     use 'folke/tokyonight.nvim'
     use 'savq/melange'
     use 'jacoborus/tender.vim'
     use 'EdenEast/nightfox.nvim'
     use 'marko-cerovac/material.nvim'
-
-    --  Speed up loading Lua modules in Neovim to improve startup time.
-    use 'lewis6991/impatient.nvim'
 
     -- statusline written in Lua
     -- settings in lua/evalline.lua
@@ -213,15 +210,16 @@ end,
 }
 )
 
-require('impatient')
+vim.loader.enable()
 
 require 'bufferline'.setup {
     options = {
         color_icons = true,
         show_tab_indicators = true,
         diagnostics = "nvim_lsp",
-        separator_style = "thick",
-        buffer_close_icon = ''
+        separator_style = "thin",
+        buffer_close_icon = '',
+        max_name_length = 50
     }
 }
 require("nvim-autopairs").setup {}
