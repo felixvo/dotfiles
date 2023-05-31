@@ -183,11 +183,58 @@ require('lazy').setup({
     },
     {
         'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate go'
+        build = ':TSUpdate go',
+        config = function()
+          require('treesitter')
+        end
+    },
+    {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      config = function()
+        require 'nvim-treesitter.configs'.setup {
+          textobjects = {
+              swap = {
+                  enable = true,
+                  swap_next = {
+                      ["<leader>swn"] = "@parameter.inner",
+                  },
+                  swap_previous = {
+                      ["<leader>swp"] = "@parameter.inner",
+                  },
+              },
+          },
+          select = {
+              enable = true,
+
+              -- Automatically jump forward to textobj, similar to targets.vim
+              lookahead = true,
+
+              keymaps = {
+                  -- You can use the capture groups defined in textobjects.scm
+                  ["af"] = "@function.outer",
+                  ["if"] = "@function.inner",
+                  ["ac"] = "@class.outer",
+                  ["ic"] = "@class.inner",
+              },
+          },
+        }
+      end
+    },
+
+    {
+      "glepnir/lspsaga.nvim",
+      event = "LspAttach",
+      config = function()
+          require("lspsaga").setup({})
+      end,
+      dependencies = {
+        {"nvim-tree/nvim-web-devicons"},
+        --Please make sure you install markdown and markdown_inline parser
+        {"nvim-treesitter/nvim-treesitter"}
+      }
     },
     -- show function signature when you type
     'ray-x/lsp_signature.nvim',
-    'nvim-treesitter/nvim-treesitter-textobjects',
     'folke/trouble.nvim',
     'nvim-telescope/telescope-ui-select.nvim',
     'simrat39/rust-tools.nvim',
@@ -384,7 +431,6 @@ require('gitsigns').setup {
 }
 
 require('evalline')
-require('treesitter')
 
 require("trouble").setup {
     icons = true,
@@ -407,31 +453,4 @@ require("todo-comments").setup {
     -- refer to the configuration section below
 }
 
-require 'nvim-treesitter.configs'.setup {
-    textobjects = {
-        swap = {
-            enable = true,
-            swap_next = {
-                ["<leader>swn"] = "@parameter.inner",
-            },
-            swap_previous = {
-                ["<leader>swp"] = "@parameter.inner",
-            },
-        },
-    },
-    select = {
-        enable = true,
-
-        -- Automatically jump forward to textobj, similar to targets.vim
-        lookahead = true,
-
-        keymaps = {
-            -- You can use the capture groups defined in textobjects.scm
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-            ["ac"] = "@class.outer",
-            ["ic"] = "@class.inner",
-        },
-    },
-}
 
