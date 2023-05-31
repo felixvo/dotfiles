@@ -66,8 +66,8 @@ nmap('Q', '@q')
 vmap('Q', ':norm @q<cr>')
 
 -- NvimTree
-nmap('<leader>tf', ':NvimTreeFindFile<cr>')
-nmap('<leader>tg', ':NvimTreeToggle<cr>')
+nmap('<leader>ef', ':NvimTreeFindFile<cr>')
+nmap('<leader>ee', ':NvimTreeToggle<cr>')
 
 -- nmap('<leader>tt', ':NvimTreeFindFile<cr>')
 -- nmap('1', ':NvimTreeFindFileToggle<cr>')
@@ -98,10 +98,10 @@ nmap('<leader>wd', '<C-w>q<CR>')
 nmap('<leader>wD', '<C-w>o<CR>')
 
 --
-nmap('<leader>tc', ':tabnew<cr>')
-nmap('<leader>tC', ':tabclose<cr>')
-nmap('<leader>tn', ':tabn<cr>')
-nmap('<leader>tp', ':tabp<cr>')
+--nmap('<leader>tc', ':tabnew<cr>')
+--nmap('<leader>tC', ':tabclose<cr>')
+--nmap('<leader>tn', ':tabn<cr>')
+--nmap('<leader>tp', ':tabp<cr>')
 
 
 --  moving line up/down

@@ -27,8 +27,6 @@ require('packer').startup({ function(use)
     use 'joshdick/onedark.vim'
     use 'bluz71/vim-nightfly-guicolors'
     use 'folke/tokyonight.nvim'
-    use 'savq/melange'
-    use 'jacoborus/tender.vim'
     use 'EdenEast/nightfox.nvim'
     use 'marko-cerovac/material.nvim'
 
@@ -152,9 +150,7 @@ require('packer').startup({ function(use)
 
     use 'nvim-treesitter/nvim-treesitter-textobjects'
 
-    -- still has open issue https://github.com/folke/trouble.nvim/pull/175
-    -- use "folke/trouble.nvim"
-    use 'felixvo/trouble.nvim'
+    use "folke/trouble.nvim"
 
     use 'nvim-telescope/telescope-ui-select.nvim'
 
