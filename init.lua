@@ -16,25 +16,35 @@ vim.g.maplocalleader       = " "
 
 require('lazy').setup({
 
-    'kyazdani42/nvim-web-devicons',
+    {
+      'nvim-tree/nvim-web-devicons',
+    },
 
     -- :StartupTime for staruptime detail
-    'dstein64/vim-startuptime',
+    {
+      'dstein64/vim-startuptime',
+    },
 
     -- colorscheme
-    'lifepillar/vim-gruvbox8',
-    'rebelot/kanagawa.nvim',
-    'chriskempson/base16-vim',
-    'morhetz/gruvbox',
-    'joshdick/onedark.vim',
-    'bluz71/vim-nightfly-guicolors',
-    'folke/tokyonight.nvim',
-    'EdenEast/nightfox.nvim',
-    'marko-cerovac/material.nvim',
+    -- {'lifepillar/vim-gruvbox8', lazy = false,},
+    { 
+      'rebelot/kanagawa.nvim',
+      lazy = false,
+      config = function()
+        vim.cmd("colorscheme kanagawa")
+      end
+    },
+    -- {'chriskempson/base16-vim', lazy = false,},
+    -- {'morhetz/gruvbox', lazy = false,},
+    -- {'joshdick/onedark.vim', lazy = false,},
+    -- {'bluz71/vim-nightfly-guicolors', lazy = false,},
+    -- {'folke/tokyonight.nvim', lazy = false,},
+    -- {'EdenEast/nightfox.nvim', lazy = false,},
+    -- {'marko-cerovac/material.nvim', lazy = false,},
 
     -- statusline written in Lua
     -- settings in lua/evalline.lua
-    'nvim-lualine/lualine.nvim',
+    {'nvim-lualine/lualine.nvim', lazy = false,},
 
     -- git plugins
     -- alternative to 'airblade/vim-gitgutter'
@@ -43,28 +53,50 @@ require('lazy').setup({
     'junegunn/gv.vim',
 
     'tpope/vim-projectionist',
-    -- common plugins
-    { 'ellisonleao/glow.nvim', branch = 'main' },
-    'numToStr/Comment.nvim',
-    'tpope/vim-surround',
+    -- markdown preview
+    {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
+    {
+      'numToStr/Comment.nvim',
+      config = function()
+        require('Comment').setup()
+      end
+    },
+    {
+      "kylechui/nvim-surround",
+      version = "*", -- Use for stability; omit to use `main` branch for the latest features
+      event = "VeryLazy",
+      config = function()
+          require("nvim-surround").setup({
+              -- Configuration here, or leave empty to use defaults
+          })
+      end
+    },
     { -- easy motion
         'phaazon/hop.nvim',
         branch = 'v1', -- optional but strongly recommended
         config = function()
             -- you can configure Hop the way you like here; see :h hop-config
+
+          require('hop').setup({ keys = 'etovxqpdygfblzhckisuran' })
         end
     },
-    'windwp/nvim-autopairs',
-    'mg979/vim-visual-multi',
-    'godlygeek/tabular',
     {
-        "iamcco/markdown-preview.nvim",
-        build = function() vim.fn["mkdp#util#install"]() end,
+      'windwp/nvim-autopairs',
+      config = function()
+        require('nvim-autopairs').setup({})
+      end
     },
+    'mg979/vim-visual-multi',
+    -- 'godlygeek/tabular',
 
     'ahmedkhalf/project.nvim',
     'lukas-reineke/indent-blankline.nvim',
-    'windwp/nvim-ts-autotag',
+    {
+      'windwp/nvim-ts-autotag',
+      config = function()
+        require('nvim-ts-autotag').setup()
+      end
+    },
     'folke/todo-comments.nvim',
     'p00f/nvim-ts-rainbow',
     {
@@ -80,14 +112,47 @@ require('lazy').setup({
 
     -- tabline
     -- use 'romgrk/barbar.nvim'
-    'akinsho/bufferline.nvim',
-    'APZelos/blamer.nvim',
+    {
+      'akinsho/bufferline.nvim',
+      lazy = false,
+      version = "*",
+      dependencies = 'nvim-tree/nvim-web-devicons',
+      config = function()
+        require 'bufferline'.setup {
+            options = {
+                color_icons = true,
+                show_tab_indicators = true,
+                diagnostics = "nvim_lsp",
+                separator_style = "thin",
+                buffer_close_icon = '',
+                max_name_length = 50
+            }
+        }
+      end
+    },
+    {
+      'APZelos/blamer.nvim',
+      config = function()
+        vim.g.blamer_enabled = true
+      end
+    },
 
     -- similar to NERDTree/netrw
-    'kyazdani42/nvim-tree.lua',
+    {
+      'kyazdani42/nvim-tree.lua',
+      config = function()
+        require("nvimtree")
+      end
+    },
 
     -- startup page
-    'goolord/alpha-nvim',
+    {
+      'goolord/alpha-nvim',
+      lazy = false,
+      config = function()
+        require('startup_page')
+      end
+    },
 
     -- plenary is a common dependency for other Lua plugins
     'nvim-lua/plenary.nvim',
@@ -110,7 +175,12 @@ require('lazy').setup({
     'L3MON4D3/LuaSnip',
     'rafamadriz/friendly-snippets',
     'hrsh7th/cmp-path',
-    "lukas-reineke/lsp-format.nvim",
+    {
+      "lukas-reineke/lsp-format.nvim",
+      config = function()
+        require("lsp-format").setup {}
+      end
+    },
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate go'
@@ -151,25 +221,45 @@ require('lazy').setup({
         "antoinemadec/FixCursorHold.nvim",
         "olimorris/neotest-rspec"
       },
+      setup = function()
+        require("neotest").setup {
+          adapters = {
+            require("neotest-rspec")
+          },
+          diagnostic = {
+            enabled = true,
+            severity = 1
+          },
+          floating = {
+            border = "rounded",
+            max_height = 0.6,
+            max_width = 0.6,
+            options = {}
+          },
+          output = {
+            enabled = true,
+            open_on_run = "short"
+          },
+          jump = {
+            enabled = false
+          },
+          quickfix = {
+            enabled = false,
+            open = false
+          },
+          output_panel = {
+            enabled = true,
+            open = "botright split | resize 15"
+          },
+        }
+      end
     },
 })
 
 
 vim.loader.enable()
 
-require 'bufferline'.setup {
-    options = {
-        color_icons = true,
-        show_tab_indicators = true,
-        diagnostics = "nvim_lsp",
-        separator_style = "thin",
-        buffer_close_icon = '',
-        max_name_length = 50
-    }
-}
-require("nvim-autopairs").setup {}
 require("lsp")
-require("nvimtree")
 require('settings')
 require('mappings')
 
@@ -311,20 +401,11 @@ require("trouble").setup {
     use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
 }
 
-require('nvim-ts-autotag').setup()
-require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-
 require("todo-comments").setup {
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
 }
-
-
-require('Comment').setup()
-
-require("lsp-format").setup {}
-
 
 require 'nvim-treesitter.configs'.setup {
     textobjects = {
@@ -353,38 +434,4 @@ require 'nvim-treesitter.configs'.setup {
         },
     },
 }
-require('startup_page')
-vim.g.blamer_enabled = false
 
-
-
-require("neotest").setup {
-  adapters = {
-    require("neotest-rspec")
-  },
-  diagnostic = {
-    enabled = true,
-    severity = 1
-  },
-  floating = {
-    border = "rounded",
-    max_height = 0.6,
-    max_width = 0.6,
-    options = {}
-  },
-  output = {
-    enabled = true,
-    open_on_run = "short"
-  },
-  jump = {
-    enabled = false
-  },
-  quickfix = {
-    enabled = false,
-    open = false
-  },
-  output_panel = {
-    enabled = true,
-    open = "botright split | resize 15"
-  },
-}
