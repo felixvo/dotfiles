@@ -20,11 +20,6 @@ require('lazy').setup({
       'nvim-tree/nvim-web-devicons',
     },
 
-    -- :StartupTime for staruptime detail
-    {
-      'dstein64/vim-startuptime',
-    },
-
     -- colorscheme
     -- {'lifepillar/vim-gruvbox8', lazy = false,},
     { 
@@ -44,7 +39,13 @@ require('lazy').setup({
 
     -- statusline written in Lua
     -- settings in lua/evalline.lua
-    {'nvim-lualine/lualine.nvim', lazy = false,},
+    {
+      'nvim-lualine/lualine.nvim',
+      lazy = false,
+      config = function()
+        require('evalline')
+      end
+    },
 
     -- git plugins
     -- alternative to 'airblade/vim-gitgutter'
@@ -204,12 +205,25 @@ require('lazy').setup({
     -- startup page
     {
       'goolord/alpha-nvim',
-      lazy = true,
+      lazy = false,
       config = function()
         require('startup_page')
       end
     },
-
+    -- Which-key
+    {
+        'folke/which-key.nvim',
+        event = "VeryLazy",
+        init = function()
+          vim.o.timeout = true
+          vim.o.timeoutlen = 300
+        end,
+        opts = {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+    },
     -- plenary is a common dependency for other Lua plugins
     'nvim-lua/plenary.nvim',
     {
@@ -474,5 +488,4 @@ telescope.load_extension('fzf')
 -- you need to call load_extension, somewhere after setup function:
 telescope.load_extension('file_browser')
 telescope.load_extension('projects')
-require('evalline')
 
