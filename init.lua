@@ -48,7 +48,20 @@ require('lazy').setup({
 
     -- git plugins
     -- alternative to 'airblade/vim-gitgutter'
-    'lewis6991/gitsigns.nvim',
+    {
+      'lewis6991/gitsigns.nvim',
+      config = function()
+        require('gitsigns').setup {
+            signs = {
+                add          = { hl = 'GitSignsAdd', text = '+', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
+                change       = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
+                delete       = { hl = 'GitSignsDelete', text = '-', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+                topdelete    = { hl = 'GitSignsDelete', text = '^', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+                changedelete = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
+            },
+        }
+      end
+    },
     'tpope/vim-fugitive',
     'junegunn/gv.vim',
 
@@ -89,15 +102,58 @@ require('lazy').setup({
     'mg979/vim-visual-multi',
     -- 'godlygeek/tabular',
 
-    'ahmedkhalf/project.nvim',
-    'lukas-reineke/indent-blankline.nvim',
+    {
+      'ahmedkhalf/project.nvim',
+      config = function()
+        require("project_nvim").setup {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+            -- Telescope mappings
+            --
+            -- project.nvim comes with the following mappings:
+
+            -- Normal mode	Insert mode	Action
+            -- f	<c-f>	find_project_files
+            -- b	<c-b>	browse_project_files
+            -- d	<c-d>	delete_project
+            -- s	<c-s>	search_in_project_files
+            -- r	<c-r>	recent_project_files
+            -- w	<c-w>	change_working_directory
+
+            -- When set to false, you will get a message when project.nvim changes your
+            -- directory.
+            silent_chdir = true,
+            patterns = { ".git", "package.json" },
+        }
+      end
+    },
+    {
+      'lukas-reineke/indent-blankline.nvim',
+      config = function()
+        require("indent_blankline").setup {
+            -- for example, context is off by default, use this to turn it on
+            show_current_context = true,
+            show_current_context_start = false,
+        }
+      end
+    },
     {
       'windwp/nvim-ts-autotag',
       config = function()
         require('nvim-ts-autotag').setup()
       end
     },
-    'folke/todo-comments.nvim',
+    {
+      'folke/todo-comments.nvim',
+      config = function()
+        require("todo-comments").setup {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        }
+      end
+    },
     'p00f/nvim-ts-rainbow',
     {
         "folke/zen-mode.nvim",
@@ -130,12 +186,12 @@ require('lazy').setup({
         }
       end
     },
-    {
-      'APZelos/blamer.nvim',
-      config = function()
-        vim.g.blamer_enabled = true
-      end
-    },
+    -- {
+    --   'APZelos/blamer.nvim',
+    --   config = function()
+    --     vim.g.blamer_enabled = true
+    --   end
+    -- },
 
     -- similar to NERDTree/netrw
     {
@@ -148,7 +204,7 @@ require('lazy').setup({
     -- startup page
     {
       'goolord/alpha-nvim',
-      lazy = false,
+      lazy = true,
       config = function()
         require('startup_page')
       end
@@ -166,6 +222,13 @@ require('lazy').setup({
     'junegunn/fzf',
     'junegunn/fzf.vim',
 
+    {
+      "williamboman/mason.nvim",
+      build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+      config = function()
+        require("mason").setup()
+      end
+    },
     -- LSP
     'neovim/nvim-lspconfig',
     'williamboman/nvim-lsp-installer',
@@ -234,8 +297,31 @@ require('lazy').setup({
       }
     },
     -- show function signature when you type
-    'ray-x/lsp_signature.nvim',
-    'folke/trouble.nvim',
+    -- {
+    --   'ray-x/lsp_signature.nvim',
+    --   config = function()
+    --     require "lsp_signature".setup({})
+    --   end
+    -- },
+    {
+      'folke/trouble.nvim',
+      config = function()
+        require("trouble").setup {
+            icons = true,
+            fold_open = "v", -- icon used for open folds
+            fold_closed = ">", -- icon used for closed folds
+            indent_lines = false, -- add an indent guide below the fold icons
+            signs = {
+                -- icons / text used for a diagnostic
+                -- error = "error",
+                -- warning = "warn",
+                -- hint = "hint",
+                -- information = "info"
+            },
+            use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
+        }
+      end
+    },
     'nvim-telescope/telescope-ui-select.nvim',
     'simrat39/rust-tools.nvim',
 
@@ -268,7 +354,7 @@ require('lazy').setup({
         "antoinemadec/FixCursorHold.nvim",
         "olimorris/neotest-rspec"
       },
-      setup = function()
+      config = function()
         require("neotest").setup {
           adapters = {
             require("neotest-rspec")
@@ -387,70 +473,6 @@ telescope.load_extension('fzf')
 -- To get telescope-file-browser loaded and working with telescope,
 -- you need to call load_extension, somewhere after setup function:
 telescope.load_extension('file_browser')
-
-require("project_nvim").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-    -- Telescope mappings
-    --
-    -- project.nvim comes with the following mappings:
-
-    -- Normal mode	Insert mode	Action
-    -- f	<c-f>	find_project_files
-    -- b	<c-b>	browse_project_files
-    -- d	<c-d>	delete_project
-    -- s	<c-s>	search_in_project_files
-    -- r	<c-r>	recent_project_files
-    -- w	<c-w>	change_working_directory
-
-    -- When set to false, you will get a message when project.nvim changes your
-    -- directory.
-    silent_chdir = true,
-    patterns = { ".git", "package.json" },
-}
-
 telescope.load_extension('projects')
-
-require "lsp_signature".setup({})
-
-require("indent_blankline").setup {
-    -- for example, context is off by default, use this to turn it on
-    show_current_context = true,
-    show_current_context_start = false,
-}
-
-require('gitsigns').setup {
-    signs = {
-        add          = { hl = 'GitSignsAdd', text = '+', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
-        change       = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
-        delete       = { hl = 'GitSignsDelete', text = '-', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
-        topdelete    = { hl = 'GitSignsDelete', text = '^', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
-        changedelete = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
-    },
-}
-
 require('evalline')
-
-require("trouble").setup {
-    icons = true,
-    fold_open = "v", -- icon used for open folds
-    fold_closed = ">", -- icon used for closed folds
-    indent_lines = false, -- add an indent guide below the fold icons
-    signs = {
-        -- icons / text used for a diagnostic
-        -- error = "error",
-        -- warning = "warn",
-        -- hint = "hint",
-        -- information = "info"
-    },
-    use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
-}
-
-require("todo-comments").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-}
-
 
