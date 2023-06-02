@@ -236,6 +236,7 @@ require('lazy').setup({
     'junegunn/fzf',
     'junegunn/fzf.vim',
 
+    -- LSP
     {
       "williamboman/mason.nvim",
       build = ":MasonUpdate", -- :MasonUpdate updates registry contents
@@ -243,9 +244,8 @@ require('lazy').setup({
         require("mason").setup()
       end
     },
-    -- LSP
+    'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
-    'williamboman/nvim-lsp-installer',
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-nvim-lsp',
     'saadparwaiz1/cmp_luasnip',

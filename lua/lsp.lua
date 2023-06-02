@@ -12,6 +12,12 @@ function OrgImports(wait_ms)
         end
     end
 end
+vim.api.nvim_create_autocmd('LspAttach', {
+  desc = 'LSP actions',
+  callback = function(event)
+    -- Create your keybindings here...
+  end
+})
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -52,119 +58,17 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
--- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'gopls' }
--- for _, lsp in ipairs(servers) do
---   lspconfig[lsp].setup {
---     -- on_attach = my_custom_on_attach,
---     capabilities = capabilities,
---   }
--- end
-
-
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
-
-require("nvim-lsp-installer").setup {}
-
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
 local lspconfig = require('lspconfig')
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-lspconfig['pyright'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
-lspconfig['tsserver'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
-lspconfig['rust_analyzer'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-    -- Server-specific settings...
-    settings = {
-        ["rust-analyzer"] = {}
-    }
-}
-lspconfig['lua_ls'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-}
-lspconfig['svelte'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
-
-lspconfig['tailwindcss'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
-
-lspconfig['gopls'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
-lspconfig['html'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-    filetypes = { "html", "handlebars" }
-}
-
-lspconfig['emmet_ls'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-    filetypes = { "html", "handlebars" }
-}
-
-lspconfig['ember'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
-
-lspconfig['solargraph'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
-
-lspconfig['jsonls'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
-lspconfig['yamlls'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
-lspconfig['eslint'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
-
+require('mason-lspconfig').setup_handlers({
+  function(server_name)
+    lspconfig[server_name].setup({
+      on_attach = on_attach,
+      capabilities = lsp_capabilities,
+    })
+  end,
+})
 require('rust-tools').setup({})
 
 
