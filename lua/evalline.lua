@@ -188,11 +188,11 @@ ins_right {
     color = { fg = colors.green, gui = 'bold' },
 }
 
-ins_right {
-    'branch',
-    -- icon = 'ᛂ',
-    color = { fg = colors.violet, gui = 'bold' },
-}
+-- ins_right {
+--     'branch',
+--     icon = 'ᛂ',
+--     color = { fg = colors.violet, gui = 'bold' },
+-- }
 
 ins_right {
     'diff',
