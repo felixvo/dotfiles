@@ -60,7 +60,8 @@ end
 
 local lspconfig = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-
+require("mason").setup()
+require('mason-lspconfig').setup()
 require('mason-lspconfig').setup_handlers({
   function(server_name)
     lspconfig[server_name].setup({
@@ -69,6 +70,10 @@ require('mason-lspconfig').setup_handlers({
     })
   end,
 })
+lspconfig['solargraph'].setup {
+    on_attach = on_attach,
+    capabilities = lsp_capabilities,
+}
 -- require('rust-tools').setup({})
 
 
