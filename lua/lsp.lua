@@ -69,7 +69,7 @@ require('mason-lspconfig').setup_handlers({
     })
   end,
 })
-require('rust-tools').setup({})
+-- require('rust-tools').setup({})
 
 
 -- luasnip setup

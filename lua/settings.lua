@@ -1,6 +1,6 @@
 vim.g.mapleader       = " "
 vim.o.number          = true
-vim.o.relativenumber  = false
+vim.o.relativenumber  = true
 vim.o.wrap            = false
 vim.o.incsearch       = true
 vim.o.cursorline      = true
@@ -27,12 +27,12 @@ vim.o.foldclose       = 'all'
 vim.o.foldenable      = false
 vim.o.backspace       = 'indent,eol,start'
 vim.o.termguicolors   = true
-vim.o.smartcase       = true --  When searching try to be smart about cases
-vim.o.pumheight       = 10 --Makes popup menu smaller
+vim.o.smartcase       = true    --  When searching try to be smart about cases
+vim.o.pumheight       = 10      --Makes popup menu smaller
 vim.o.fileencoding    = 'utf-8' --The encoding written to file
-vim.o.conceallevel    = 0 -- So that I can see `` in markdown files
-vim.o.smarttab        = true -- Makes tabbing smarter will realize you have 2 vs 4
-vim.o.expandtab       = true -- Converts tabs to spaces
+vim.o.conceallevel    = 0       -- So that I can see `` in markdown files
+vim.o.smarttab        = true    -- Makes tabbing smarter will realize you have 2 vs 4
+vim.o.expandtab       = true    -- Converts tabs to spaces
 vim.o.tabstop         = 2
 vim.o.shiftwidth      = 2
 vim.o.smartindent     = true -- Makes indenting smart
@@ -57,13 +57,13 @@ vim.g.floaterm_height = 0.8
 vim.g.guifont         = "Cascadia Code:h16"
 
 
-vim.cmd([[ 
+vim.cmd([[
 highlight clear SignColumn
 highlight clear LineNr
 "" colorscheme base16-oceanicnext
 "" colorscheme base16-material-darker
-" colorscheme nightfox 
-" colorscheme material 
+" colorscheme nightfox
+" colorscheme material
 
 let g:fzf_preview_window = ['right:hidden', 'ctrl-/']
 
