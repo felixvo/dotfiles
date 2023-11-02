@@ -1,5 +1,6 @@
 let mapleader =" "
 "source ~/.vimrc
+set relativenumber
 set surround
 " cs"' => change surround from " to '
 " cst" => change surround tab to "
