@@ -13,6 +13,14 @@ set easymotion
 " Do incremental searching.
 set incsearch
 
+
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
 <C-n>, next
 <C-x>, skip
 <C-p>, previous
@@ -25,12 +33,27 @@ map <leader>fs <Action>(SaveAll)<CR>
 map <leader>ff <Action>(GotoFile)<CR>
 map <leader>fr <Action>(RecentFiles)<CR>
 
+map <leader>cpr <Action>(CopyReference)<CR>
 
+map <leader>wW <Action>(UnsplitAll)<CR>
+map <leader>wD <Action>(CloseAllEditors)<CR>
+map <leader>uu <Action>(ReopenClosedTab)<CR>
 
 map gr <Action>(FindUsages)<CR>
+map gi <Action>(GotoImplementation)<CR>
+map gu <Action>(GotoSuperMethod)<CR>
+" map gi <Action>(GotoImplementation)<CR>
 "map <leader>e <Plug>(easymotion-f)
 
 
 """ Windows
 map <leader>wv <Action>(SplitVertically)<CR>
 map <leader>wg <Action>(SplitHorizontally)<CR>
+
+
+set idearefactormode=keep
+set NERDTree
+let g:NERDTreeMapJumpParent='h'
+
+
+Plug 'tommcdo/vim-exchange'
