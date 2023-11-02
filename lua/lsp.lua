@@ -74,7 +74,7 @@ lspconfig['solargraph'].setup {
     on_attach = on_attach,
     capabilities = lsp_capabilities,
 }
-require('rust-tools').setup({})
+-- require('rust-tools').setup({})
 
 
 -- luasnip setup

@@ -131,11 +131,12 @@ require('lazy').setup({
     },
     {
       'lukas-reineke/indent-blankline.nvim',
+      main = "ibl",
       config = function()
-        require("indent_blankline").setup {
+        require("ibl").setup {
             -- for example, context is off by default, use this to turn it on
-            show_current_context = true,
-            show_current_context_start = false,
+            -- show_current_context = true,
+            -- show_current_context_start = false,
         }
       end
     },
@@ -264,38 +265,38 @@ require('lazy').setup({
           require('treesitter')
         end
     },
-    {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      config = function()
-        require 'nvim-treesitter.configs'.setup {
-          textobjects = {
-              swap = {
-                  enable = true,
-                  swap_next = {
-                      ["<leader>swn"] = "@parameter.inner",
-                  },
-                  swap_previous = {
-                      ["<leader>swp"] = "@parameter.inner",
-                  },
-              },
-          },
-          select = {
-              enable = true,
-
-              -- Automatically jump forward to textobj, similar to targets.vim
-              lookahead = true,
-
-              keymaps = {
-                  -- You can use the capture groups defined in textobjects.scm
-                  ["af"] = "@function.outer",
-                  ["if"] = "@function.inner",
-                  ["ac"] = "@class.outer",
-                  ["ic"] = "@class.inner",
-              },
-          },
-        }
-      end
-    },
+    -- {
+    --   'nvim-treesitter/nvim-treesitter-textobjects',
+    --   config = function()
+    --     require 'nvim-treesitter.configs'.setup {
+    --       textobjects = {
+    --           swap = {
+    --               enable = true,
+    --               swap_next = {
+    --                   ["<leader>swn"] = "@parameter.inner",
+    --               },
+    --               swap_previous = {
+    --                   ["<leader>swp"] = "@parameter.inner",
+    --               },
+    --           },
+    --       },
+    --       select = {
+    --           enable = true,
+    --
+    --           -- Automatically jump forward to textobj, similar to targets.vim
+    --           lookahead = true,
+    --
+    --           keymaps = {
+    --               -- You can use the capture groups defined in textobjects.scm
+    --               ["af"] = "@function.outer",
+    --               ["if"] = "@function.inner",
+    --               ["ac"] = "@class.outer",
+    --               ["ic"] = "@class.inner",
+    --           },
+    --       },
+    --     }
+    --   end
+    -- },
 
     {
       "glepnir/lspsaga.nvim",
@@ -316,27 +317,27 @@ require('lazy').setup({
     --     require "lsp_signature".setup({})
     --   end
     -- },
-    {
-      'folke/trouble.nvim',
-      config = function()
-        require("trouble").setup {
-            icons = true,
-            fold_open = "v", -- icon used for open folds
-            fold_closed = ">", -- icon used for closed folds
-            indent_lines = false, -- add an indent guide below the fold icons
-            signs = {
-                -- icons / text used for a diagnostic
-                -- error = "error",
-                -- warning = "warn",
-                -- hint = "hint",
-                -- information = "info"
-            },
-            use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
-        }
-      end
-    },
+    -- {
+    --   'folke/trouble.nvim',
+    --   config = function()
+    --     require("trouble").setup {
+    --         icons = true,
+    --         fold_open = "v", -- icon used for open folds
+    --         fold_closed = ">", -- icon used for closed folds
+    --         indent_lines = false, -- add an indent guide below the fold icons
+    --         signs = {
+    --             -- icons / text used for a diagnostic
+    --             -- error = "error",
+    --             -- warning = "warn",
+    --             -- hint = "hint",
+    --             -- information = "info"
+    --         },
+    --         use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
+    --     }
+    --   end
+    -- },
     'nvim-telescope/telescope-ui-select.nvim',
-    'simrat39/rust-tools.nvim',
+    -- 'simrat39/rust-tools.nvim',
 
     -- Lua
     -- use {
@@ -352,54 +353,54 @@ require('lazy').setup({
     --
 
     -- Ruby
-    'tpope/vim-rails',
-    'vim-ruby/vim-ruby',
+    -- 'tpope/vim-rails',
+    -- 'vim-ruby/vim-ruby',
 
 
     -- Test
     -- use 'vim-test/vim-test'
     -- use { "rcarriga/vim-ultest", dependencies = {"vim-test/vim-test"}, build = ":UpdateRemotePlugins" }
-    {
-      "nvim-neotest/neotest",
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
-        "antoinemadec/FixCursorHold.nvim",
-        "olimorris/neotest-rspec"
-      },
-      config = function()
-        require("neotest").setup {
-          adapters = {
-            require("neotest-rspec")
-          },
-          diagnostic = {
-            enabled = true,
-            severity = 1
-          },
-          floating = {
-            border = "rounded",
-            max_height = 0.6,
-            max_width = 0.6,
-            options = {}
-          },
-          output = {
-            enabled = true,
-            open_on_run = "short"
-          },
-          jump = {
-            enabled = false
-          },
-          quickfix = {
-            enabled = false,
-            open = false
-          },
-          output_panel = {
-            enabled = true,
-            open = "botright split | resize 15"
-          },
-        }
-      end
-    },
+    -- {
+    --   "nvim-neotest/neotest",
+    --   dependencies = {
+    --     "nvim-lua/plenary.nvim",
+    --     "nvim-treesitter/nvim-treesitter",
+    --     "antoinemadec/FixCursorHold.nvim",
+    --     "olimorris/neotest-rspec"
+    --   },
+    --   config = function()
+    --     require("neotest").setup {
+    --       adapters = {
+    --         require("neotest-rspec")
+    --       },
+    --       diagnostic = {
+    --         enabled = true,
+    --         severity = 1
+    --       },
+    --       floating = {
+    --         border = "rounded",
+    --         max_height = 0.6,
+    --         max_width = 0.6,
+    --         options = {}
+    --       },
+    --       output = {
+    --         enabled = true,
+    --         open_on_run = "short"
+    --       },
+    --       jump = {
+    --         enabled = false
+    --       },
+    --       quickfix = {
+    --         enabled = false,
+    --         open = false
+    --       },
+    --       output_panel = {
+    --         enabled = true,
+    --         open = "botright split | resize 15"
+    --       },
+    --     }
+    --   end
+    -- },
 })
 
 
