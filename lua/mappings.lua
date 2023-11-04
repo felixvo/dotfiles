@@ -74,7 +74,7 @@ nmap('<leader>ee', ':NvimTreeToggle<cr>')
 -- nmap('<leader>tf', ':NvimTreeFocus<cr>')
 
 
-nmap('<leader>j', ':HopChar2<cr>')
+nmap('s', ':HopChar2<cr>')
 nmap('<leader>wv', ':vs<cr>')
 nmap('<leader>wg', ':sp<cr>')
 
