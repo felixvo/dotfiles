@@ -11,11 +11,13 @@ set surround
 set multiple-cursors
 set commentary
 set argtextobj
-set easymotion
-set textobj-entire
+"set easymotion
+set sneak
 set ReplaceWithRegister
 set NERDTree
+set highlightedyank
 
+"Plug 'vim-textobj-entire'
 Plug 'tommcdo/vim-exchange'
 
 """ Plugin settings -------------------------
@@ -40,15 +42,17 @@ set scrolloff=5
 "set incsearch
 set nu "show current line number
 set relativenumber
-set idearefactormode=keep
+set smartcase
 
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 
+""" Idea specific settings ------------------
+set ideajoin
+set idearefactormode=keep
 
 
 """ Mappings --------------------------------
-map <leader>s <Plug>(easymotion-s)
 map <leader>fs <Action>(SaveAll)<CR>
 map <leader>ff <Action>(GotoFile)<CR>
 map <leader>fr <Action>(RecentFiles)<CR>
@@ -62,7 +66,11 @@ map <leader>uu <Action>(ReopenClosedTab)<CR>
 map gr <Action>(FindUsages)<CR>
 map gi <Action>(GotoImplementation)<CR>
 map gu <Action>(GotoSuperMethod)<CR>
-"map <leader>e <Plug>(easymotion-f)
+
+"""
+"map s <Plug>(easymotion-s)
+"map <leader>s <Plug>(sneak-s)
+"map <leader>ls <Plug>(easymotion-sl)
 
 
 """ Windows
