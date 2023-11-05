@@ -22,6 +22,8 @@ antigen bundle "zsh-users/zsh-syntax-highlighting"
 antigen bundle "zsh-users/zsh-history-substring-search"
 #antigen bundle "lukechilds/zsh-nvm"
 antigen bundle "spaceship-prompt/spaceship-prompt"
+antigen bundle "jeffreytse/zsh-vi-mode"
+#antigen bundle spaceship-prompt/spaceship-vi-mode@main
 
 antigen apply
 
@@ -65,6 +67,7 @@ fi;
 # case insensitive path-completion
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
+export ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=20000
@@ -188,6 +191,10 @@ function aws_profile {
   fi
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+function zvm_after_init() {
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  bindkey '^h' edit-command-line
+}
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #zprof # bottom of .zshrc
