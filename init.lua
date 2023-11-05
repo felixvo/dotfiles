@@ -85,7 +85,7 @@ require('lazy').setup({
           })
       end
     },
-    { -- easy motion
+    {-- easy motion
         'phaazon/hop.nvim',
         branch = 'v1', -- optional but strongly recommended
         config = function()

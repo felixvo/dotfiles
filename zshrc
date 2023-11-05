@@ -1,5 +1,7 @@
 #zmodload zsh/zprof # top of your .zshrc file
 source ~/antigen.zsh
+export PATH="/opt/homebrew/bin:$PATH"
+# source $(brew --prefix autoenv)/activate.sh
 
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=false
@@ -20,6 +22,8 @@ antigen bundle "zsh-users/zsh-syntax-highlighting"
 antigen bundle "zsh-users/zsh-history-substring-search"
 #antigen bundle "lukechilds/zsh-nvm"
 antigen bundle "spaceship-prompt/spaceship-prompt"
+antigen bundle "jeffreytse/zsh-vi-mode"
+#antigen bundle spaceship-prompt/spaceship-vi-mode@main
 
 antigen apply
 
@@ -63,11 +67,68 @@ fi;
 # case insensitive path-completion
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
+export ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=20000
+SAVEHIST=20000
 HISTFILE=~/.zsh_history
+
+alias lg=lazygit
+
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+# CTRL-/ to toggle small preview window to see the full command
+# CTRL-Y to copy the command into clipboard using pbcopy
+export FZF_CTRL_R_OPTS="
+  --reverse
+  --preview 'echo {}' --preview-window down:10:nohidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
+# Print tree structure in the preview window
+export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
+
+export FZF_COMPLETION_OPTS='--border --info=inline'
+# Use fd (https://github.com/sharkdp/fd) instead of the default find
+# command for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
+  esac
+}
+
+
+
+
+# bat config
+export BAT_THEME="gruvbox-dark"
+
 
 
 # Fix bug duplicate on tab
@@ -117,7 +178,7 @@ function csv {
     cat "$@" | column -s, -t | less -#2 -N -S
 }
 
-source $(brew --prefix autoenv)/activate.sh
+
 
 alias ctags="`brew --prefix`/bin/ctags"
 
@@ -130,6 +191,10 @@ function aws_profile {
   fi
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+function zvm_after_init() {
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  bindkey '^h' edit-command-line
+}
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #zprof # bottom of .zshrc
