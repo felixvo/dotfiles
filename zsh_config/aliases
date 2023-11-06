@@ -19,19 +19,20 @@ alias treel='tree -L'
 
 # git
 alias g='git'
-alias gc='git checkout'
-alias gst='git status'
+alias gb='git checkout'
+alias gs='git status'
 alias gd='git diff'
 alias gds='git diff --staged'
-alias gpu='git pull origin'
+alias gpl='git pull origin'
 alias gp='git push origin'
 alias gw='git switch -'
-alias gnoe='git commit --no-edit'
+alias gc='git commit'
+alias gcnoe='git commit --no-edit'
 alias gca='git commit --amend'
 alias grh='git commit --hard && git clean -df'
 alias gtree='git log --graph --simplify-by-decoration --pretty=format:'%d' --all'
 
-gb() {
+gbs() {
  git checkout "$(git branch --all | fzf| tr -d '[:space:]')"
 }
 
