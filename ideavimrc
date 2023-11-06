@@ -59,9 +59,9 @@ map <leader>fr <Action>(RecentFiles)<CR>
 
 map <leader>cpr <Action>(CopyReference)<CR>
 
-map <leader>wW <Action>(UnsplitAll)<CR>
-map <leader>wD <Action>(CloseAllEditors)<CR>
-map <leader>uu <Action>(ReopenClosedTab)<CR>
+map <leader>wd <Action>(UnsplitAll)<CR>
+map <leader>bD <Action>(CloseAllEditors)<CR>
+map <leader>bro <Action>(ReopenClosedTab)<CR>
 
 map gr <Action>(FindUsages)<CR>
 map gi <Action>(GotoImplementation)<CR>
