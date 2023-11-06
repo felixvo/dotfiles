@@ -21,12 +21,17 @@ require('lazy').setup({
     },
 
     -- colorscheme
-    {'lifepillar/vim-gruvbox8', lazy = false,},
+    {
+      'lifepillar/vim-gruvbox8', lazy = false,
+      config = function()
+        vim.cmd("colorscheme gruvbox8_hard")
+      end
+    },
     { 
       'rebelot/kanagawa.nvim',
       lazy = false,
       config = function()
-        vim.cmd("colorscheme kanagawa")
+--       vim.cmd("colorscheme kanagawa")
       end
     },
     -- {'chriskempson/base16-vim', lazy = false,},
