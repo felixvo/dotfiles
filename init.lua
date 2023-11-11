@@ -311,31 +311,31 @@ require('lazy').setup({
       }
     },
     -- show function signature when you type
-    -- {
-    --   'ray-x/lsp_signature.nvim',
-    --   config = function()
-    --     require "lsp_signature".setup({})
-    --   end
-    -- },
-    -- {
-    --   'folke/trouble.nvim',
-    --   config = function()
-    --     require("trouble").setup {
-    --         icons = true,
-    --         fold_open = "v", -- icon used for open folds
-    --         fold_closed = ">", -- icon used for closed folds
-    --         indent_lines = false, -- add an indent guide below the fold icons
-    --         signs = {
-    --             -- icons / text used for a diagnostic
-    --             -- error = "error",
-    --             -- warning = "warn",
-    --             -- hint = "hint",
-    --             -- information = "info"
-    --         },
-    --         use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
-    --     }
-    --   end
-    -- },
+    {
+      'ray-x/lsp_signature.nvim',
+      config = function()
+        require "lsp_signature".setup({})
+      end
+    },
+    {
+      'folke/trouble.nvim',
+      config = function()
+        require("trouble").setup {
+            icons = true,
+            fold_open = "v", -- icon used for open folds
+            fold_closed = ">", -- icon used for closed folds
+            indent_lines = false, -- add an indent guide below the fold icons
+            signs = {
+                -- icons / text used for a diagnostic
+                -- error = "error",
+                -- warning = "warn",
+                -- hint = "hint",
+                -- information = "info"
+            },
+            use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
+        }
+      end
+    },
     'nvim-telescope/telescope-ui-select.nvim',
     -- 'simrat39/rust-tools.nvim',
 
