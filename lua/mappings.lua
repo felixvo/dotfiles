@@ -97,6 +97,10 @@ nmap('<leader>gp', ':G push<CR>')
 -- close windows
 nmap('<leader>wd', '<C-w>q<CR>')
 nmap('<leader>wD', '<C-w>o<CR>')
+nmap('<leader>wh', '<C-w>h<CR>')
+nmap('<leader>wl', '<C-w>l<CR>')
+nmap('<leader>wj', '<C-w>j<CR>')
+nmap('<leader>wk', '<C-w>k<CR>')
 
 --
 --nmap('<leader>tc', ':tabnew<cr>')
