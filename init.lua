@@ -106,7 +106,7 @@ require('lazy').setup({
       end
     },
     'mg979/vim-visual-multi',
-    -- 'godlygeek/tabular',
+    'godlygeek/tabular',
 
     {
       'ahmedkhalf/project.nvim',

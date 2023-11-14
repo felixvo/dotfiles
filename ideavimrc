@@ -15,7 +15,7 @@ set argtextobj
 set sneak
 set ReplaceWithRegister
 set NERDTree
-set highlightedyank
+"set highlightedyank
 
 "Plug 'vim-textobj-entire'
 Plug 'tommcdo/vim-exchange'
@@ -66,6 +66,16 @@ map <leader>bro <Action>(ReopenClosedTab)<CR>
 map gr <Action>(FindUsages)<CR>
 map gi <Action>(GotoImplementation)<CR>
 map gu <Action>(GotoSuperMethod)<CR>
+
+
+"
+map <leader>rr <Action>(RenameElement)
+map <leader>ic <Action>(IntroduceConstant)
+map <leader>if <Action>(IntroduceField)
+map <leader>ip <Action>(IntroduceParameter)
+map <leader>iv <Action>(IntroduceVariable)
+"map <leader>i <Action>(IntroduceParameterObject)
+"map <leader>ifp <Action>(IntroduceFunctionalParameter)
 
 """
 "map s <Plug>(easymotion-s)
