@@ -97,6 +97,10 @@ nmap('<leader>gp', ':G push<CR>')
 -- close windows
 nmap('<leader>wd', '<C-w>q<CR>')
 nmap('<leader>wD', '<C-w>o<CR>')
+nmap('<leader>wh', '<C-w>h<CR>')
+nmap('<leader>wl', '<C-w>l<CR>')
+nmap('<leader>wj', '<C-w>j<CR>')
+nmap('<leader>wk', '<C-w>k<CR>')
 
 --
 --nmap('<leader>tc', ':tabnew<cr>')
@@ -109,12 +113,12 @@ nmap('<leader>wD', '<C-w>o<CR>')
 vmap('J', ":m '>+1<CR>gv=gv")
 vmap('K', ":m '<-2<CR>gv=gv")
 
-vmap('<leader>cc', ':Commentary<CR>')
-nmap('<leader>cc', ':Commentary<CR>')
+-- vmap('<leader>cc', ':Commentary<CR>')
+-- nmap('<leader>cc', ':Commentary<CR>')
 
 
-vmap('<Leader>a=', ':Tabularize /=<CR>')
-vmap('<Leader>a:', ':Tabularize /:\zs<CR>')
+-- vmap('<Leader>a=', ':Tabularize /=<CR>')
+-- vmap('<Leader>a:', ':Tabularize /:\zs<CR>')
 
 
 -- floatterm
@@ -126,13 +130,13 @@ vmap('<Leader>a:', ':Tabularize /:\zs<CR>')
 
 
 
-nmap('<C-u>', '<C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y>')
-nmap('<C-d>', '<C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e>')
+-- nmap('<C-u>', '<C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y><C-y>')
+-- nmap('<C-d>', '<C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e><C-e>')
 
-nmap('<leader>hr', '<Plug>RestNvim<CR>')
+-- nmap('<leader>hr', '<Plug>RestNvim<CR>')
 
 
 -- Tests
-nmap('<leader>tt', ':lua require("neotest").run.run()<cr>')
-nmap('<leader>tf', ':lua require("neotest").run.run(vim.fn.expand("%"))<cr>')
-nmap('<leader>tp', ':  lua require("neotest").output_panel.toggle()<cr>')
+-- nmap('<leader>tt', ':lua require("neotest").run.run()<cr>')
+-- nmap('<leader>tf', ':lua require("neotest").run.run(vim.fn.expand("%"))<cr>')
+-- nmap('<leader>tp', ':  lua require("neotest").output_panel.toggle()<cr>')
