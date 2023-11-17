@@ -11,8 +11,8 @@ set surround
 set multiple-cursors
 set commentary
 set argtextobj
-"set easymotion
-set sneak
+set easymotion
+"set sneak
 set ReplaceWithRegister
 set NERDTree
 "set highlightedyank
@@ -78,7 +78,12 @@ map <leader>iv <Action>(IntroduceVariable)
 "map <leader>ifp <Action>(IntroduceFunctionalParameter)
 
 """
-"map s <Plug>(easymotion-s)
+map s <Plug>(easymotion-s)
+map f <Plug>(easymotion-f)
+map F <Plug>(easymotion-F)
+map t <Plug>(easymotion-t)
+map T <Plug>(easymotion-T)
+
 "map <leader>s <Plug>(sneak-s)
 "map <leader>ls <Plug>(easymotion-sl)
 
