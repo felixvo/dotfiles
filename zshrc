@@ -21,9 +21,10 @@ antigen bundle "zsh-users/zsh-autosuggestions"
 antigen bundle "zsh-users/zsh-syntax-highlighting"
 antigen bundle "zsh-users/zsh-history-substring-search"
 #antigen bundle "lukechilds/zsh-nvm"
-antigen bundle "spaceship-prompt/spaceship-prompt"
+#antigen bundle "spaceship-prompt/spaceship-prompt"
 antigen bundle "jeffreytse/zsh-vi-mode"
 #antigen bundle spaceship-prompt/spaceship-vi-mode@main
+antigen theme romkatv/powerlevel10k
 
 antigen apply
 
