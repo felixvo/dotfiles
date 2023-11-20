@@ -1,5 +1,13 @@
-
 return {
+
+  {
+    "akinsho/bufferline.nvim",
+    opts = function(_, opts)
+      -- always_show_bufferline even if there is only one buffer
+      opts.options.always_show_bufferline = true
+    end,
+  },
+
   -- add telescope-fzf-native
   {
     "telescope.nvim",
@@ -99,5 +107,5 @@ return {
         end,
       },
     },
-  }
+  },
 }
