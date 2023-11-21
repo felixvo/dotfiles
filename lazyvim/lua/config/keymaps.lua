@@ -10,3 +10,4 @@ local Util = require("lazyvim.util")
 local map = Util.safe_keymap_set
 
 map({ "n", "s" }, "<leader>fs", "<cmd>w<cr><esc>", { desc = "Save file" })
+map({ "v" }, "YY", '"+y<cr>', { desc = "Copy to clipboard" })
