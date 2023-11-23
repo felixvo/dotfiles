@@ -78,11 +78,13 @@ map <leader>iv <Action>(IntroduceVariable)
 "map <leader>ifp <Action>(IntroduceFunctionalParameter)
 
 """
-map s <Plug>(easymotion-s)
-map f <Plug>(easymotion-f)
-map F <Plug>(easymotion-F)
-map t <Plug>(easymotion-t)
-map T <Plug>(easymotion-T)
+nmap s <Plug>(easymotion-s)
+nmap f <Plug>(easymotion-f)
+nmap F <Plug>(easymotion-F)
+nmap t <Plug>(easymotion-t)
+nmap T <Plug>(easymotion-T)
+nmap <leader><leader>j <Plug>(easymotion-j)
+nmap <leader><leader>k <Plug>(easymotion-k)
 
 "map <leader>s <Plug>(sneak-s)
 "map <leader>ls <Plug>(easymotion-sl)
@@ -92,3 +94,14 @@ map T <Plug>(easymotion-T)
 map <leader>wv <Action>(SplitVertically)<CR>
 map <leader>wg <Action>(SplitHorizontally)<CR>
 
+map <leader>ss <Action>(FileStructurePopup)
+map <leader>bt <Action>(ToggleLineBreakpoint)
+
+
+
+nmap ]q <Action>(GotoNextError)
+nmap [q <Action>(GotoPreviousError)
+
+nmap ]b <Action>(GotoNextBookmark)
+nmap [b <Action>(GotoPreviousBookmark)
+nmap <leader>bb <Action>(ToggleBookmark)
