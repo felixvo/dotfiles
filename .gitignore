@@ -5,3 +5,4 @@ bundle
 autoload
 ftplugin
 *.log
+lazyvim/lazy-lock.json

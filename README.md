@@ -11,55 +11,21 @@ ln -s ~/dotfiles/colors ~/.config/nvim/colors
 ln -sf ~/dotfiles/kitty.conf ~/.config/kitty/kitty.conf
 ```
 
-## Fonts
-```
-brew tap homebrew/cask-fonts
-brew cask install caskroom/fonts/font-victor-mono
-brew cask install caskroom/fonts/font-source-code-pro
-
-```
-
 ## Brew
 
 ```
-brew install zsh
-brew install zplug
-brew install fd
-brew install ripgrep
-brew install --cask alfred
-brew install --cask iterm2
-brew install git
+brew install zsh fd ripgrep git tree jq tldr exa node tig lazygit pgcli mycli stern yq
+
 brew install fzf
 $(brew --prefix)/opt/fzf/install
-brew install tree
-brew install jq
-brew install --cask spectacle
-brew install --cask visual-studio-code
-brew install tldr
-brew install exa
-brew install node
-brew install spaceship
-brew install git-crypt
-brew install tig
-brew install pgcli
-brew install mycli
-brew install stern
-brew install alt-tab
-brew tap homebrew/cask-fonts
-brew install --cask font-fira-code
-brew install --cask font-jetbrains-mono
-brew install --cask libreoffice
-brew install --cask miniconda
-brew install yq
+
+brew install --cask alfred iterm2 spectacle visual-studio-code font-jetbrains-mono
 npm install dotenv
 ```
 
-## FONTS
+## Fonts
 
 ```
 brew tap homebrew/cask-fonts
-brew install --cask font-fira-code-nerd-font
-brew install --cask font-iosevka-nerd-font
-brew install --cask font-victor-mono-nerd-font
-brew install --cask font-caskaydia-cove-nerd-font
+brew install --cask font-fira-code-nerd-font font-iosevka-nerd-font font-victor-mono-nerd-font font-caskaydia-cove-nerd-font
 ```
