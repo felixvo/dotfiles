@@ -67,12 +67,14 @@ set idearefactormode=keep
 
 imap jj <Esc>
 
+
 """ Mappings --------------------------------
 map <leader>fs <Action>(SaveAll)<CR>
 map <leader>ff <Action>(GotoFile)<CR>
 nmap <Leader>fg :action SearchEverywhere<CR>
 
 map <leader>cpr <Action>(CopyReference)<CR>
+map <leader>cpp <Action>(CopyPaths)
 
 map <leader>wd <Action>(UnsplitAll)<CR>
 " map <leader>ww <Action>(HideAllWindows)
@@ -96,8 +98,7 @@ map gr <Action>(FindUsages)<CR>
 map gi <Action>(GotoImplementation)<CR>
 map gu <Action>(GotoSuperMethod)<CR>
 
-nmap <Leader>wh :action HideAllWindows<CR>
-nmap <Leader>wt :action ActivateTerminalToolWindow<CR>
+nmap <Leader>tt :action ActivateTerminalToolWindow<CR>
 
 " Shortcut for copying to/from System Clipboard
 vmap YY "+y
@@ -142,8 +143,8 @@ nmap ]b <Action>(GotoNextBookmark)
 nmap [b <Action>(GotoPreviousBookmark)
 "nmap <leader>bb <Action>(ToggleBookmark)
 
-vmap e <action>(EditorSelectWord)
-xmap E <action>(EditorUnSelectWord)
+vmap n <action>(EditorSelectWord)
+vmap p <action>(EditorUnSelectWord)
 
 
 " Move visual block
