@@ -69,13 +69,35 @@ imap jj <Esc>
 
 
 """ Mappings --------------------------------
+
+" Move visual block
+vnoremap J :m'>+<CR>gv=gv
+vnoremap K :m-2<CR>gv=gv
+" Shortcut for copying to/from System Clipboard
+vmap YY "+y
+vmap DD "+d
+nmap <Leader>p "+P
+
 map <leader>fs <Action>(SaveAll)<CR>
 map <leader>ff <Action>(GotoFile)<CR>
 nmap <Leader>fg :action SearchEverywhere<CR>
+map <leader>fu <Action>(FindUsages)
+map <leader>fs <Action>(FileStructurePopup)
 
+
+" map <leader>c <Action>(CommentByLineComment)
+" map <leader>C <Action>(CommentByBlockComment)
 map <leader>cpr <Action>(CopyReference)<CR>
 map <leader>cpp <Action>(CopyPaths)
 
+
+""" Windows
+map <C-k> <C-w>k
+map <C-j> <C-w>j
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+map <leader>wv <Action>(SplitVertically)<CR>
+map <leader>wg <Action>(SplitHorizontally)<CR>
 map <leader>wd <Action>(UnsplitAll)<CR>
 " map <leader>ww <Action>(HideAllWindows)
 " nmap <leader>wk <Action>(StretchSplitToTop)
@@ -95,17 +117,48 @@ map <leader>bo <Action>(CloseAllEditorsButActive)<CR>
 map <leader>bp <Action>(PinActiveEditorTab)
 map <leader>bP <Action>(CloseAllUnpinnedEditors)
 map <leader>bro <Action>(ReopenClosedTab)<CR>
+" map <leader>bp <Action>(ToggleLineBreakpoint)
+" map <leader>be <Action>(EditBreakpoint)
+" map <leader>bv <Action>(ViewBreakpoints)
+" " build
+" map <leader>bb <Action>(BuildMenu)
+map <leader>bt <Action>(ToggleLineBreakpoint)
+"nmap <leader>bb <Action>(ToggleBookmark)
 
+
+" " []
+nmap [g <Action>(GotoPreviousError)
+nmap ]g <Action>(GotoNextError)
+" nmap [b <Action>(PreviousTab)
+" nmap ]b <Action>(NextTab)
+" nmap [u <Action>(GotoPrevElementUnderCaretUsage)
+" nmap ]u <Action>(GotoNextElementUnderCaretUsage)
+nmap [o <Action>(PreviousOccurence)
+nmap ]o <Action>(NextOccurence)
+nmap [m <Action>(MethodUp)
+nmap ]m <Action>(MethodDown)
+nmap [c <Action>(JumpToLastChange)
+nmap ]c <Action>(JumpToNextChange)
+" nmap ]q <Action>(GotoNextError)
+" nmap [q <Action>(GotoPreviousError)
+nmap ]b <Action>(GotoNextBookmark)
+nmap [b <Action>(GotoPreviousBookmark)
+
+
+" " goto
+" map <leader>a <Action>(GotoAction)
 map gr <Action>(FindUsages)<CR>
-"map gi <Action>(GotoImplementation)<CR>
 map gu <Action>(GotoSuperMethod)<CR>
-
-nmap <Leader>tt :action ActivateTerminalToolWindow<CR>
-
-" Shortcut for copying to/from System Clipboard
-vmap YY "+y
-vmap DD "+d
-nmap <Leader>p "+P
+map ga <Action>(GotoAction)
+" map gc <Action>(GotoClass)
+" map gf <Action>(GotoFile)
+" map gs <Action>(GotoSymbol)
+" map gt <Action>(TextSearchAction)
+" map go <Action>(GotoSuperMethod)
+" map gd <Action>(GotoDeclaration)
+" map gD <Action>(GotoTypeDeclaration)
+map gi <Action>(GotoImplementation)
+map gI <Action>(QuickImplementations)
 
 "
 map <leader>rr <Action>(RenameElement)
@@ -116,7 +169,7 @@ map <leader>iv <Action>(IntroduceVariable)
 "map <leader>i <Action>(IntroduceParameterObject)
 "map <leader>ifp <Action>(IntroduceFunctionalParameter)
 
-"""
+""" easymotion
 nmap s <Plug>(easymotion-s)
 nmap f <Plug>(easymotion-f)
 nmap F <Plug>(easymotion-F)
@@ -128,44 +181,37 @@ nmap <leader><leader>k <Plug>(easymotion-k)
 "map <leader>s <Plug>(sneak-s)
 "map <leader>ls <Plug>(easymotion-sl)
 
-
-""" Windows
-map <leader>wv <Action>(SplitVertically)<CR>
-map <leader>wg <Action>(SplitHorizontally)<CR>
-
 map <leader>ss <Action>(FileStructurePopup)
-map <leader>bt <Action>(ToggleLineBreakpoint)
 
 
-
-"nmap <leader>bb <Action>(ToggleBookmark)
-
+" block slection
 vmap n <action>(EditorSelectWord)
 vmap N <action>(EditorUnSelectWord)
 
+" " menu
+map <leader>mt <Action>(MainMenu)
+map <leader>mm <Action>(EditorTabPopupMenu)
+map <leader>ma <Action>(AnalyzeMenu)
+map <leader>mb <Action>(BuildMenu)
+map <leader>mc <Action>(CodeMenu)
+map <leader>mf <Action>(FindMenuGroup)
+map <leader>mg <Action>(GoToMenu)
+map <leader>ms <Action>(ScopeViewPopupMenu)
+map <leader>mw <Action>(ToolWindowsGroup)
+"
+" " run
+map <leader>rc <Action>(ContextRun)
+map <leader>rf <Action>(ChooseRunConfiguration)
+" map <leader>rt <Action>(Rerun)
+map <leader>rr <Action>(RunTests)
 
-" Move visual block
-vnoremap J :m'>+<CR>gv=gv
-vnoremap K :m-2<CR>gv=gv
+" map <leader>rs <Action>(Stop)
+"
+" " debug
+" map <leader>dc <Action>(ContextDebug)
+" map <leader>dr <Action>(Debug)
+"
 
-
-" plugins
-"
-" " text-object
-" set vim-paragraph-motion
-" set textobj-indent
-" set textobj-entire
-" set argtextobj
-"
-" " vim settings
-" set scrolloff=5
-"
-" " text-object
-" set vim-paragraph-motion
-" set textobj-indent
-" set textobj-entire
-" set argtextobj
-"
 "
 " " tab
 " map <S-Tab> <Action>(PreviousTab)
@@ -191,40 +237,8 @@ vnoremap K :m-2<CR>gv=gv
 "
 " map <M-i> <Action>(PrevSplitter)
 " map <M-o> <Action>(NextSplitter)
-map <C-k> <C-w>k
-map <C-j> <C-w>j
-map <C-h> <C-w>h
-map <C-l> <C-w>l
-
 "
 "
-" " menu
-" map <leader>mm <Action>(MainMenu)
-" map <leader>ma <Action>(AnalyzeMenu)
-" map <leader>mb <Action>(BuildMenu)
-map <leader>mc <Action>(CodeMenu)
-" map <leader>mf <Action>(FindMenuGroup)
-" map <leader>mg <Action>(GoToMenu)
-" map <leader>ms <Action>(ScopeViewPopupMenu)
-" map <leader>mt <Action>(EditorTabPopupMenu) map <leader>mw <Action>(ToolWindowsGroup)
-"
-" " run
-map <leader>rc <Action>(ContextRun)
-" map <leader>rf <Action>(chooseRunConfiguration)
-" map <leader>rr <Action>(Rerun)
-map <leader>rt <Action>(RunTests)
-" map <leader>rs <Action>(Stop)
-"
-" " debug
-" map <leader>dc <Action>(ContextDebug)
-" map <leader>dr <Action>(Debug)
-"
-" map <leader>bp <Action>(ToggleLineBreakpoint)
-" map <leader>be <Action>(EditBreakpoint)
-" map <leader>bv <Action>(ViewBreakpoints)
-"
-" " build
-" map <leader>bb <Action>(BuildMenu)
 "
 " " refactor
 " map <leader>rn <Action>(RenameElement)
@@ -248,8 +262,6 @@ map <leader>si <Action>(SelectIn)
 " map \\sw <Action>($SearchWeb)
 "
 " " tag
-" map <leader>fu <Action>(FindUsages)
-" map <leader>fs <Action>(FileStructurePopup)
 map <leader>su <Action>(ShowUsages)
 map <leader>hl <Action>(HighlightUsagesInFile)
 map <leader>qp <Action>(QuickPreview)
@@ -257,8 +269,6 @@ map <leader>qd <Action>(QuickDefinition)
 " map <leader>qD <Action>(QuickTypeDefinition)
 "
 " " code
-" map <leader>c <Action>(CommentByLineComment)
-" map <leader>C <Action>(CommentByBlockComment)
 " map <leader>qf <Action>(ShowIntentionActions)
 " map <leader>g <Action>(ShowErrorDescription)
 " map <leader>om <Action>(OverrideMethods)
@@ -272,37 +282,7 @@ map <leader>qd <Action>(QuickDefinition)
 " " zen
 " map <leader>z <Action>(ToggleZenMode)
 "
-" " []
-nmap [g <Action>(GotoPreviousError)
-nmap ]g <Action>(GotoNextError)
-" nmap [b <Action>(PreviousTab)
-" nmap ]b <Action>(NextTab)
-" nmap [u <Action>(GotoPrevElementUnderCaretUsage)
-" nmap ]u <Action>(GotoNextElementUnderCaretUsage)
-nmap [o <Action>(PreviousOccurence)
-nmap ]o <Action>(NextOccurence)
-nmap [m <Action>(MethodUp)
-nmap ]m <Action>(MethodDown)
-nmap [c <Action>(JumpToLastChange)
-nmap ]c <Action>(JumpToNextChange)
-" nmap ]q <Action>(GotoNextError)
-" nmap [q <Action>(GotoPreviousError)
-
-nmap ]b <Action>(GotoNextBookmark)
-nmap [b <Action>(GotoPreviousBookmark)
 "
-" " goto
-" map <leader>a <Action>(GotoAction)
-map ga <Action>(GotoAction)
-" map gc <Action>(GotoClass)
-" map gf <Action>(GotoFile)
-" map gs <Action>(GotoSymbol)
-" map gt <Action>(TextSearchAction)
-" map go <Action>(GotoSuperMethod)
-" map gd <Action>(GotoDeclaration)
-" map gD <Action>(GotoTypeDeclaration)
-map gi <Action>(GotoImplementation)
-map gI <Action>(QuickImplementations)
 "
 " " terminal
 " map <leader>tt <Action>(ActivateTerminalToolWindow)
@@ -341,8 +321,6 @@ nmap \\ht <Action>(TypeHierarchy)
 " " github gist
 " map \\cg <Action>(Github.Create.Gist)
 
-
-nmap <leader>gl <Action>(Vcs.ShowHistoryForRevision)
 
 "
 " " better HJKL
