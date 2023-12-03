@@ -89,13 +89,15 @@ map <leader>wu <Action>(UnsplitAll)
 map <leader>bb <Action>(RecentFiles)<CR>
 map <leader>bd <Action>(CloseContent)<CR>
 map <leader>bD <Action>(CloseAllEditors)<CR>
+map <leader>bH <Action>(CloseAllToTheLeft)<CR>
+map <leader>bL <Action>(CloseAllToTheRight)<CR>
 map <leader>bo <Action>(CloseAllEditorsButActive)<CR>
 map <leader>bp <Action>(PinActiveEditorTab)
 map <leader>bP <Action>(CloseAllUnpinnedEditors)
 map <leader>bro <Action>(ReopenClosedTab)<CR>
 
 map gr <Action>(FindUsages)<CR>
-map gi <Action>(GotoImplementation)<CR>
+"map gi <Action>(GotoImplementation)<CR>
 map gu <Action>(GotoSuperMethod)<CR>
 
 nmap <Leader>tt :action ActivateTerminalToolWindow<CR>
@@ -136,11 +138,6 @@ map <leader>bt <Action>(ToggleLineBreakpoint)
 
 
 
-nmap ]q <Action>(GotoNextError)
-nmap [q <Action>(GotoPreviousError)
-
-nmap ]b <Action>(GotoNextBookmark)
-nmap [b <Action>(GotoPreviousBookmark)
 "nmap <leader>bb <Action>(ToggleBookmark)
 
 vmap n <action>(EditorSelectWord)
@@ -208,13 +205,14 @@ map <C-l> <C-w>l
 map <leader>mc <Action>(CodeMenu)
 " map <leader>mf <Action>(FindMenuGroup)
 " map <leader>mg <Action>(GoToMenu)
-" map <leader>ms <Action>(ScopeViewPopupMenu) map <leader>mt <Action>(EditorTabPopupMenu) map <leader>mw <Action>(ToolWindowsGroup)
+" map <leader>ms <Action>(ScopeViewPopupMenu)
+" map <leader>mt <Action>(EditorTabPopupMenu) map <leader>mw <Action>(ToolWindowsGroup)
 "
 " " run
-" map <leader>rc <Action>(ContextRun)
+map <leader>rc <Action>(ContextRun)
 " map <leader>rf <Action>(chooseRunConfiguration)
 " map <leader>rr <Action>(Rerun)
-" map <leader>rt <Action>(RunTests)
+map <leader>rt <Action>(RunTests)
 " map <leader>rs <Action>(Stop)
 "
 " " debug
@@ -275,22 +273,27 @@ map <leader>qd <Action>(QuickDefinition)
 " map <leader>z <Action>(ToggleZenMode)
 "
 " " []
-" nmap [g <Action>(GotoPreviousError)
-" nmap ]g <Action>(GotoNextError)
+nmap [g <Action>(GotoPreviousError)
+nmap ]g <Action>(GotoNextError)
 " nmap [b <Action>(PreviousTab)
 " nmap ]b <Action>(NextTab)
 " nmap [u <Action>(GotoPrevElementUnderCaretUsage)
 " nmap ]u <Action>(GotoNextElementUnderCaretUsage)
-" nmap [o <Action>(PreviousOccurence)
-" nmap ]o <Action>(NextOccurence)
-" nmap [m <Action>(MethodUp)
-" nmap ]m <Action>(MethodDown)
-" nmap [c <Action>(JumpToLastChange)
-" nmap ]c <Action>(JumpToNextChange)
+nmap [o <Action>(PreviousOccurence)
+nmap ]o <Action>(NextOccurence)
+nmap [m <Action>(MethodUp)
+nmap ]m <Action>(MethodDown)
+nmap [c <Action>(JumpToLastChange)
+nmap ]c <Action>(JumpToNextChange)
+" nmap ]q <Action>(GotoNextError)
+" nmap [q <Action>(GotoPreviousError)
+
+nmap ]b <Action>(GotoNextBookmark)
+nmap [b <Action>(GotoPreviousBookmark)
 "
 " " goto
 " map <leader>a <Action>(GotoAction)
-" map ga <Action>(GotoAction)
+map ga <Action>(GotoAction)
 " map gc <Action>(GotoClass)
 " map gf <Action>(GotoFile)
 " map gs <Action>(GotoSymbol)
@@ -298,8 +301,8 @@ map <leader>qd <Action>(QuickDefinition)
 " map go <Action>(GotoSuperMethod)
 " map gd <Action>(GotoDeclaration)
 " map gD <Action>(GotoTypeDeclaration)
-" map gi <Action>(GotoImplementation)
-" map gI <Action>(QuickImplementations)
+map gi <Action>(GotoImplementation)
+map gI <Action>(QuickImplementations)
 "
 " " terminal
 " map <leader>tt <Action>(ActivateTerminalToolWindow)
@@ -319,9 +322,9 @@ nmap ms <Action>(ShowBookmarks)
 " map \\jl <Action>(EditorJoinLines)
 "
 " " hierarchy
-" nmap \\hc <Action>(CallHierarchy)
-" nmap \\hm <Action>(MethodHierarchy)
-" nmap \\ht <Action>(TypeHierarchy)
+nmap \\hc <Action>(CallHierarchy)
+nmap \\hm <Action>(MethodHierarchy)
+nmap \\ht <Action>(TypeHierarchy)
 "
 " " vim  actions
 " map \\v <Action>(VimActions)
@@ -337,6 +340,10 @@ nmap ms <Action>(ShowBookmarks)
 "
 " " github gist
 " map \\cg <Action>(Github.Create.Gist)
+
+
+nmap <leader>gl <Action>(Vcs.ShowHistoryForRevision)
+
 "
 " " better HJKL
 " map H ^
