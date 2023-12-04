@@ -203,7 +203,7 @@ map <leader>mw <Action>(ToolWindowsGroup)
 map <leader>rc <Action>(ContextRun)
 map <leader>rf <Action>(ChooseRunConfiguration)
 " map <leader>rt <Action>(Rerun)
-map <leader>rr <Action>(RunTests)
+" map <leader>rr <Action>(RunTests)
 
 " map <leader>rs <Action>(Stop)
 "
