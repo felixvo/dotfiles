@@ -11,3 +11,6 @@ local map = Util.safe_keymap_set
 
 map({ "n", "s" }, "<leader>fs", "<cmd>w<cr><esc>", { desc = "Save file" })
 map({ "v" }, "YY", '"+y<cr>', { desc = "Copy to clipboard" })
+
+map("n", "<leader>wg", "<C-W>s", { desc = "Split window below", remap = true })
+map("n", "<leader>wv", "<C-W>v", { desc = "Split window right", remap = true })
