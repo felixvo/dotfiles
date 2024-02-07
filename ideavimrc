@@ -170,7 +170,7 @@ map <leader>iv <Action>(IntroduceVariable)
 "map <leader>ifp <Action>(IntroduceFunctionalParameter)
 
 """ easymotion
-" nmap s <Plug>(easymotion-s)
+nmap s <Plug>(easymotion-s)
 " nmap f <Plug>(easymotion-fl)
 " nmap F <Plug>(easymotion-Fl)
 " nmap t <Plug>(easymotion-tl)
